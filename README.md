@@ -1,4 +1,0 @@
-grapp
-=====
-
-Graphing App
