@@ -696,6 +696,31 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
                   .style("text-anchor", px > width / 2 ? "end" : "start");
               }
               else if (nearestSerie) {
+                    
+                    svgTooltipGroup. remove();
+                    
+                    svgTooltipGroup = clippedArea.append("g")
+       svgTooltipREct = svgTooltipGroup.append("rect")
+        .attr("fill", "rgba(255, 255, 255, .85)")
+        .attr("stroke", "#dddddd")
+        .attr("x", px > width / 2 ? "-260px"  : "0px" )
+        .attr("y", "-15px")
+        .attr("width", "260px")
+        .attr("height", "25px");
+
+       svgTooltipText = svgTooltipGroup.append("text")
+      //  .classed("tooltipText", true);
+        .attr("font-size", "9pt")
+        .attr("fill", "#666666");
+              
+              
+              
+              
+              
+              
+              
+              
+              
                 svgTooltipDot.style("display", "block")
                     .attr("cx", px + "px")
                     .attr("cy", py + "px")
@@ -725,12 +750,12 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
           var lineYPos = lastMouseY - appSettings.margin - appSettings.descriptionZoneHeight;
           if (lineXPos < 0 || lineXPos > width || lineYPos < 0 || lineYPos >= height  ) {
             svgSectionLineX.style("display", "none");
-            svgSectionLineY.style("display", "none");
+            //svgSectionLineY.style("display", "none");
       
           }
           else {
             svgSectionLineX.style("display", "block").attr("x1", lineXPos).attr("x2", lineXPos+"px");
-            svgSectionLineY.style("display", "block").attr("y1", lineYPos).attr("y2", lineYPos+"px");
+            //svgSectionLineY.style("display", "block").attr("y1", lineYPos).attr("y2", lineYPos+"px");
           }
       }
 
@@ -890,7 +915,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
               return;
 
           svgSectionLineX.style("display", "none");
-          svgSectionLineY.style("display", "none");
+          //svgSectionLineY.style("display", "none");
           if (zoomTimer)
               clearTimeout(zoomTimer);
           zoomTimer = setTimeout(function () { onZoomTimer(); }, zoomTimeout);
@@ -1010,29 +1035,39 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
         .attr("r", 4)
         .style("display", "none");
 
+
       var svgTooltipGroup = clippedArea.append("g")
+      var svgTooltipREct = svgTooltipGroup.append("rect")
+        .attr("fill", "#ffffff")
+        .attr("stroke", "#dddddd")
+        .attr("x", "0px")
+        .attr("y", "-18px")
+        .attr("width", "300px")
+        .attr("height", "20px");
+
       var svgTooltipText = svgTooltipGroup.append("text")
       //  .classed("tooltipText", true);
         .attr("font-size", "9pt")
         .attr("fill", "#818181");
-      var svgTooltipText2 = svgTooltipGroup.append("text")
+        
+      //var svgTooltipText2 = svgTooltipGroup.append("text")
       //  .classed("tooltipText", true);
-        .attr("font-size", "9pt")
-        .attr("fill", "#818181");
+      //  .attr("font-size", "9pt")
+      //  .attr("fill", "#818181");
 
         
       var svgSectionLineX = clippedArea.append("line")
         .attr("x1", width).attr("x2", width)
         .attr("y1", 0).attr("y2", height)
         .style("stroke", "#aaaaff" )
-        .style("stroke-dasharray", "10, 5, 1, 5" )
-        .style("stroke-width", 1 );
-      var svgSectionLineY = clippedArea.append("line")
-        .attr("x1", 0).attr("x2", width)
-        .attr("y1", height).attr("y2", height)
-        .style("stroke", "#aaaaff" )
-        .style("stroke-dasharray", "10, 5, 1, 5" )
-        .style("stroke-width", 1 );
+//        .style("stroke-dasharray", "10, 5, 1, 5" )
+       .style("stroke-width", 1 );
+ //     var svgSectionLineY = clippedArea.append("line")
+ //       .attr("x1", 0).attr("x2", width)
+ //       .attr("y1", height).attr("y2", height)
+//        .style("stroke", "#aaaaff" )
+//        .style("stroke-dasharray", "10, 5, 1, 5" )
+//        .style("stroke-width", 1 );
 
 
       ///////////////////////////
@@ -1122,7 +1157,19 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
           d3.select("#detailsPanel").style("display", "none");
       })
       ///////////////////////////
-
+      
+      d3.select("#aboutUsButton")
+      .on("click", function () { 
+          d3.select("#aboutUsPanel").style("display", "block");
+          d3.select("#aboutUsButton").style("display", "none");
+      })
+      
+      d3.select("#aboutUsPanel")
+      .on("click", function () { 
+          d3.select("#aboutUsButton").style("display", "block");
+          d3.select("#aboutUsPanel").style("display", "none");
+      })
+      ///////////////////////////
       stateManager.refreshChartFunction = loadDataAndRedraw;
 
       ///////////////////////////
