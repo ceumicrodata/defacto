@@ -1,3 +1,23 @@
+@font-face {
+font-family: NewtypeMonoRounded;
+src: url("font/NewtypeMonoRounded_2-reg.otf") format("opentype");
+}
+@font-face {
+font-family: NewtypeMonoRounded;
+font-weight: bold;
+src: url("font/NewtypeMonoRounded_3-bold.otf") format("opentype");
+}
+@font-face {
+font-family: NewtypeMonoRounded;
+font-weight: lighter;
+src: url("font/NewtypeMonoRounded_1-light.otf") format("opentype");
+}
+@font-face {
+font-family: NewtypeMonoRounded;
+font-weight: bolder;
+src: url("font/NewtypeMonoRounded_4-heavy.otf") format("opentype");
+}
+
 body { 
   font-size: 10pt;
   font-weight: 400;
@@ -31,22 +51,12 @@ div {
 #mainTitle {
   position: absolute;
   color: #684224;
-  top: 10pt;
-  left: 0pt;
-  font-size: 22pt;
-  font-weight: 300;
+  top: 15pt;
+  left: 5pt;
+  font-size: 17pt;
+  font-weight: bold;
   background-color: #e8e8e8; 
-  font-family: 'Open Sans', sans-serif;
-}
-
-#mainTitle h1{ /* DEFACTO.CEU.HU */
-
-}
-
-.mainTitle h4{  /* CEU Microdata */
-  font-size: 11pt;
-  font-weight: 400;
-  margin: 0px;
+  font-family: 'NewtypeMonoRounded', sans-serif;
 }
 
 .chartContainer {
