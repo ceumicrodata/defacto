@@ -6,10 +6,10 @@ import csv
 from collections import defaultdict
 import json
 
-INDICATOR_SOURCE_FOLDER = './indicators/'
+INDICATOR_SOURCE_FOLDER = '../data/staging/'
 indicator_files = os.listdir(INDICATOR_SOURCE_FOLDER)
 
-UPLOAD_FOLDER = '../data/'
+UPLOAD_FOLDER = '../data/upload/'
 if not os.path.isdir(UPLOAD_FOLDER):
     os.mkdir(UPLOAD_FOLDER)
 
