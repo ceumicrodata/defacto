@@ -83,17 +83,19 @@
           <img src="page_layout/icon_share.png">
         </div>
         <div class="leftButtonArea" id = "chartShareArea" >
+          <!-- FIXME data-href="http://defacto.ceu.hu/?chartPath=Kulsoegyensuly_tradebalance&amp;keyPath=V3&amp;dateFrom=1995-03-31&amp;dateTo=2013-09-30" -->
           <div class="fb-like" data-layout="button_count" data-action="recommend" data-show-faces="true" data-share="true"></div>
         <br><br>
           <div class="g-plusone" data-size="medium"></div>
         <br><br>
-          <a href="https://twitter.com/share" class="twitter-share-button" data-lang="hu">Tweet</a>
+          <!-- FIXME: data-url="URL" -->
+          <a href="https://twitter.com/share?related=DefactoCEU" class="twitter-share-button" data-lang="hu">Tweet</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         <br><br>
           <span id="tumblr_button_abc123"></span>
           <script type="text/javascript">
           /// FIXME: take URL with GET params
-            var tumblr_link_url = "http://defacto.ceu.hu";
+            var tumblr_link_url = window.location.href;
             var tumblr_link_name = "Defacto";
             var tumblr_link_description = "Defacto";
           </script>
