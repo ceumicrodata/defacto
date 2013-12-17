@@ -355,7 +355,11 @@
                 ], 
                 "title": "Államadósság", 
                 "valueMin": 0, 
-                "dateFormat": "%Y", 
+                  "timeAxis" : {
+                    "tickCount": 8, 
+                    "subdivide" : 0,   
+                    "tickFormat": "dateAxisAnnual"
+                  }, 
                 "dateTo": "2013-06-30", 
                 "dateFrom": "2000-03-31", 
                 "dateMin": "2000-03-31", 
