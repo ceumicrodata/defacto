@@ -34,7 +34,7 @@ function updateMainMenu(initialMainId) {
            .classed("mainMenuItemNormal", true);
       })
       .on("click", function () {  
-        changeChart(d3.select(this).attr("id").replace("chartPath_", ""));    
+        changeChart( {"chartPath" : d3.select(this).attr("id").replace("chartPath_", "") } );    
       });
 
       if (x<MAINMENU_NUM_ITEMS_IN_ROW-1)
@@ -79,7 +79,7 @@ function updateSubMenu(mainId, initialSubId) {
       d3.select(".subMenuItemActive").classed("subMenuItemHover",true);
     })
     .on("click", function () {  
-      changeChart(d3.select(this).attr("id").replace("chartPath_", ""));    
+      changeChart( {"chartPath" : d3.select(this).attr("id").replace("chartPath_", "") });    
     });
     s++;
    }
@@ -88,25 +88,33 @@ function updateSubMenu(mainId, initialSubId) {
 var lastInitialChartPath = null;
    
 //calling globalStateManager.changeState() directly: onclick, website initialization
-function changeChart(chartPath, pars) {
-  var url = "?chartPath="+chartPath;
+function changeChart(pars) {
+
+  var chartPath = pars && pars.chartPath ? pars.chartPath : "";
   var title = "Defacto";
   lastInitialChartPath = chartPath;
   var state = { "chartPath" : chartPath };
+  var url = "?chartPath="+chartPath;;
   
-  if (pars && pars.keyPath)
+  if (pars && pars.keyPath) {
     state.keyPath = pars.keyPath;
-  if (pars && pars.dateFrom)
+    url += "&keyPath="+pars.keyPath;
+  }
+  if (pars && pars.dateFrom) {
     state.dateFrom = pars.dateFrom;
-  if (pars && pars.dateTo)
+    url += "&dateFrom="+pars.dateFrom;
+  }
+  if (pars && pars.dateTo) {
     state.dateTo = pars.dateTo;
-  
+    url += "&dateTo="+pars.dateTo;
+  }
+ 
   globalStateManager.changeState(state , title,  url );
   
   d3.select("body")
     .on("keydown", function() {
         if (d3.event.keyCode == 27 && lastInitialChartPath)
-            changeChart(lastInitialChartPath);
+            changeChart( { "chartPath" : lastInitialChartPath });
         });
 }
 
@@ -146,8 +154,8 @@ globalStateManager.changeChartFunction = function(stateData) {
   
   //creating the new chart
   var chartMetaData = globalMetadata[mainKey].charts[subKey]; 
-  var validChartPath = mainKey + "_" + subKey;
+  stateData.chartPath = mainKey + "_" + subKey;
   d3.select(".chartContainer").html("");
-  d3.select("#chart1").call(cmd_chart, validChartPath, chartMetaData, 
+  d3.select("#chart1").call(cmd_chart, stateData, chartMetaData, 
      globalMetadataTemplates, globalMetadataDefaults, globalSettings, globalStateManager);
 }

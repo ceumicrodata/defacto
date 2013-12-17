@@ -1,6 +1,6 @@
 var firstUse = true;
 
-function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDefaults, appSettings, stateManager, useUrlSearchParams ) {
+function cmd_chart(selection, stateData, metaData, metadataTemplates, metadataDefaults, appSettings, stateManager  ) {
 
   console.log ("MAIN ENTRY POINT: ");
   function applyMetadataDefaults() {
@@ -27,7 +27,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
   }
   ////////////////////////////////
   
-  function getUrlSearchParams() {
+  /*function getUrlSearchParams() {
       console.log (window.location.search.substring(1));
       var pairs = window.location.search.substring(1).split("&"),  obj = {}, pair, i;
       for (i in pairs) {
@@ -45,7 +45,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
       }
       return obj;
   }
-
+  */
   ////////////////////////////////
 
   var keyPathIntervals = new mapOfIntervals();
@@ -55,6 +55,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
   var currentMaxValue = false;
   var previousMinValue = false;
   var previousMaxValue = false;
+  var chartPath = stateData.chartPath;
 
   selection.select(".chartContainer").each(function () {
    
@@ -74,9 +75,13 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
         var timeDomain = scalesTime.domain();
 
         if (stateData.timeFrom === undefined)
-            stateData.timeFrom = timeDomain[0].getTime();
+            stateData.timeFrom = (stateData.dateFrom === undefined)
+               ? timeDomain[0].getTime()
+               : d3.time.format(metaData.dateFormat).parse(stateData.dateFrom).getTime();
         if (stateData.timeTo === undefined)
-            stateData.timeTo = timeDomain[1].getTime();      
+            stateData.timeTo = (stateData.dateTo === undefined)
+               ? timeDomain[1].getTime()
+               : d3.time.format(metaData.dateFormat).parse(stateData.dateTo).getTime();   
       }
       function changeState(stateData) {
 
@@ -1185,10 +1190,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
       stateManager.refreshChartFunction = loadDataAndRedraw;
 
       ///////////////////////////
-
-      var stateData = firstUse ? getUrlSearchParams() : {} ;
-      firstUse = false;
-      
+   
       completeStateData(stateData);
       loadDataAndRedraw(stateData);             
   });
