@@ -88,11 +88,20 @@ function updateSubMenu(mainId, initialSubId) {
 var lastInitialChartPath = null;
    
 //calling globalStateManager.changeState() directly: onclick, website initialization
-function changeChart(chartPath) {
+function changeChart(chartPath, pars) {
   var url = "?chartPath="+chartPath;
   var title = "CEU Microdata"; //TODO
   lastInitialChartPath = chartPath;
-  globalStateManager.changeState( { "chartPath" : chartPath }, title,  url );
+  var state = { "chartPath" : chartPath };
+  
+  if (pars && pars.keyPath)
+    state.keyPath = pars.keyPath;
+  if (pars && pars.dateFrom)
+    state.dateFrom = pars.dateFrom;
+  if (pars && pars.dateTo)
+    state.dateTo = pars.dateTo;
+  
+  globalStateManager.changeState(state , title,  url );
   
   d3.select("body")
     .on("keydown", function() {

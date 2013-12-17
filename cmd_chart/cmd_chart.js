@@ -1,4 +1,5 @@
-  
+var firstUse = true;
+
 function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDefaults, appSettings, stateManager, useUrlSearchParams ) {
 
   console.log ("MAIN ENTRY POINT: ");
@@ -1184,7 +1185,9 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
 
       ///////////////////////////
 
-      var stateData = useUrlSearchParams ? getUrlSearchParams() : {} ;
+      var stateData = firstUse ? getUrlSearchParams() : {} ;
+      firstUse = false;
+      
       completeStateData(stateData);
       loadDataAndRedraw(stateData);             
   });

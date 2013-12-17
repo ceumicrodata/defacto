@@ -165,7 +165,7 @@
        globalMetadataTemplates = templatesJson;
        d3.json("metadata/metadataDefaults.json", function(defaultsJson) {
           globalMetadataDefaults = defaultsJson;
-          changeChart (pars.chartPath ? pars.chartPath : "");
+          changeChart (pars.chartPath ? pars.chartPath : "", pars);
        });
     });
 
