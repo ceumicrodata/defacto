@@ -2,19 +2,22 @@
   position: absolute;
   top: 0px;
   margin: 0px;
-  font-size: 10pt;
+  font-size: 11pt;
   
   padding-left: 20pt;  
-  padding-top: 7pt;  
+  padding-top: 6pt;  
   
-  width: 100pt;
+  width: 160pt;
   height: 20pt; 
   border-left: 1px solid #dddddd;
+  margin-left: -1px;
 }
 .mainMenuItemActive {
   font-weight: bold;
   color: #333333;
   background-color: #F9F9F9; 
+  border-bottom: 1px solid #dddddd;
+
 }
 .mainMenuItemNormal {
   color: #006D9E;

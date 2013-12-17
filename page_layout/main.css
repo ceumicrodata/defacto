@@ -1,10 +1,30 @@
+@font-face {
+font-family: NewtypeMonoRounded;
+src: url("font/NewtypeMonoRounded_2-reg.otf") format("opentype");
+}
+@font-face {
+font-family: NewtypeMonoRounded;
+font-weight: bold;
+src: url("font/NewtypeMonoRounded_3-bold.otf") format("opentype");
+}
+@font-face {
+font-family: NewtypeMonoRounded;
+font-weight: lighter;
+src: url("font/NewtypeMonoRounded_1-light.otf") format("opentype");
+}
+@font-face {
+font-family: NewtypeMonoRounded;
+font-weight: bolder;
+src: url("font/NewtypeMonoRounded_4-heavy.otf") format("opentype");
+}
+
 body { 
   font-size: 10pt;
   font-weight: 400;
   font-family: 'Open Sans', sans-serif;
   color: #505050;
-  background-color: #bbbbbb; 
-  background-image: url('ceumicrodata_background.png');
+  background-color: #e8e8e8; 
+  background-image: url('background.png');
   background-position:center top;
 }
 
@@ -20,36 +40,23 @@ div {
   left: 50%;
 }
 
-#ceumicrodata_logo {
-  margin-top: 28px;
-  margin-bottom: 29px;
-}
-
 .whiteBox {
-  margin-top: 171px;
+  margin-top: 78px;
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 460pt;
   background-color: #F9F9F9;   
 }
 
-.mainTitle {
+#mainTitle {
   position: absolute;
-  top: 20px;
-  left: 60px;
-}
-
-.mainTitle h1{ /* Graphing App */
-  font-size: 22pt;
-  font-weight: 300;
-  margin: 0px;
-  margin-top: -5pt;
-}
-
-.mainTitle h4{  /* CEU Microdata */
-  font-size: 11pt;
-  font-weight: 400;
-  margin: 0px;
+  color: #684224;
+  top: 15pt;
+  left: 5pt;
+  font-size: 17pt;
+  font-weight: bold;
+  background-color: #e8e8e8; 
+  font-family: 'NewtypeMonoRounded', sans-serif;
 }
 
 .chartContainer {
@@ -65,27 +72,58 @@ div {
 #detailsButton {
   cursor:pointer;
   position: absolute;
-  right: 50pt;
-  top: 70pt;
+  right: 214pt;
+  top: 120pt;
   width: 15pt;
   height: 15pt;
-  background-color: #eeeeee;
-  border: 1px solid #aaaaaa;
   text-align: center;  
 }
 
 #detailsPanel {
-  cursor:pointer;
   display: none;
   position: absolute;
-  right: 50pt;
-  top: 70pt;
-  width: 400pt;
-  padding: 50px;
-  background-color: #eeeeee;
-  border: 1px solid #aaaaaa;
-  text-align: center;   
+  right: 206pt;
+  top: 114pt;
+  width: 200pt;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  text-align: left;   
+}
+#detailsPanel img {
+  position:absolute;
+  top: 4pt;
+  right: 4pt;
+  cursor:pointer;
+}
 
+#aboutUsButton {
+  cursor:pointer;
+  position: absolute;
+  right: 20pt;
+  top: 78pt;
+  width: 200pt;
+  height: 15pt;
+  text-align: right;  
+}
+
+#aboutUsPanel {
+  display: none;
+  z-index: 200;
+  position: absolute;
+  right: 20pt;
+  top: 70pt;
+  width: 200pt;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  text-align: left;   
+}
+#aboutUsPanel img {
+  position:absolute;
+  top: 4pt;
+  right: 4pt;
+  cursor:pointer;
 }
 
 .chartShareButtons {
@@ -94,20 +132,59 @@ div {
   left: 680pt;
   right: 10pt;
   bottom: 10pt;
+
 }
-.chartShareArea {
-  z-index: 100;
+
+
+.leftButton {
   position: absolute;
-  background-color: #eeeeee;  
-  height: 24px;
+  left: 0px;
+  width: 21pt;
+  height: 21pt;
+  margin-left: -1px;
+  z-index: 200;
+  background-color: #ffffff;
+}
+
+#shareButton {
+  top: 0px;
+}
+#aboutButton {
+  top: 30pt;
+}
+.shareButton_normal {
+  border-left: 1px solid #dddddd; 
+}
+.shareButton_hover {
+  border-top: 1px solid #dddddd; 
+  border-right: 1px solid #dddddd; 
+  border-bottom: 1px solid #dddddd; 
+}
+
+
+
+#shareButton img{
+  margin-left:  3px;
+}
+#aboutButton img{
+  margin-left:  1px;
+}
+
+.leftButtonArea {
+  z-index: 50;
+  position: absolute;
+  background-color: #ffffff;  
+  border: 1px solid #dddddd; 
   width: 200px;
-  padding: 3px;
+  padding: 20px;
   right: 30pt;
   display: none;
-
 }
 
-#shareFacebookArea   {   top: 0pt; }
-#shareGooglePlusArea {   top:  25pt; }
-#shareTwitterArea    {   top: 50pt; }
-#shareTumblrArea     {   top: 75pt; }
+#chartShareArea {
+  top: 0pt;
+}
+
+#chartAboutArea {
+  top: 30pt;
+}

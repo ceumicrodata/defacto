@@ -242,6 +242,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
 
                           series[s].path = clippedArea.append("svg:path")
                                   .style("stroke-width", series[s].thickness)
+                                  .style("fill", "none")
                                   .style("stroke", lastKey ? series[lastKey].color : appSettings.chartBackgroundColor);
                       }
                   }
@@ -335,8 +336,12 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
             console.log("VISIBLE AREA: Min:" + currentMinValue + " Max:" + currentMaxValue);
             var currentValueMin = scalesValue.domain()[0];
             var currentValueMax = scalesValue.domain()[1];
-            var newValueMin = adaptiveYAxisFunctions[metaData.valueAxis.minValue]( currentMinValue , currentValueMin);
-            var newValueMax = adaptiveYAxisFunctions[metaData.valueAxis.maxValue]( currentMaxValue , currentValueMax);
+            
+            var valueRange = metaData.valueMax - metaData.valueMin;
+
+            var newValueMin = adaptiveYAxisFunctions[metaData.valueAxis.minValue]( currentMinValue , currentValueMin, valueRange);
+            var newValueMax = adaptiveYAxisFunctions[metaData.valueAxis.maxValue]( currentMaxValue , currentValueMax, valueRange);
+  
             if ( currentValueMin != newValueMin || currentValueMax != newValueMax) {
               valueScaleAnimator.start(currentValueMin, currentValueMax, newValueMin, newValueMax);
             }
@@ -358,7 +363,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
                   
                   var newVisibleStatus = isSerieVisible(series[s].isVisible,currentKeyPath);
                   var oldVisibleStatus = series[s].visible;
-                  var animationTarget = series[s].parentSerie ? series[series[s].parentSerie] :  series[s];
+                  //var animationTarget = series[s].parentSerie ? series[series[s].parentSerie] :  series[s];
                    
                   if (!oldVisibleStatus && newVisibleStatus) {
                   
@@ -372,7 +377,6 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
                          .transition().duration(appSettings.transitionSpeed)
                         //.attr("d", line(series[s].visiblePart))
                         .style("stroke", series[s].color)
-                        .style("fill", "none")
                         .style("opacity", 1);
                         
                         
@@ -438,7 +442,10 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
                   .attr("width", (scalesTime(timeTo) - scalesTime(timeFrom)) + "px");
             }
           }
-          
+          if (true) {//metaData.showZerolIne 
+             var y = (scalesValue(0))  + "px";
+             svgZeroLine.attr("y1", y).attr("y2", y).style("display","block");
+          }
           
           var timeDomain = scalesTime.domain();
           if (timeDomain[0] < timeMin)
@@ -516,7 +523,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
           //legend area
           if (lastMouseX >= totalWidth - appSettings.margin - appSettings.legendWidth) {
                          
-              var legenRelativeYCoord = lastMouseY - appSettings.margin- - appSettings.descriptionZoneHeight;
+              var legenRelativeYCoord = lastMouseY - appSettings.margin - appSettings.descriptionZoneHeight;
               var n = Math.floor(legenRelativeYCoord / appSettings.legendItemOffset);
               if (n>= 0 && n<currentLegendData.length )
                 return currentLegendData[n].serie;
@@ -587,7 +594,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
           lastMouseY = coords[1];
           updateMouse();
       }
-      function updateMouse() {
+      function updateMouse( ) {
           if (zoomTimer)
               return;
           var tooltipInfo = new Object();
@@ -616,22 +623,39 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
               var xPos = Math.min(Math.max(xf, 0), 1) * appSettings.legendWidth;
               var s = currentValues[i].serie;
               var hidden = nearestSerie && (s != nearestSerie);
+              var selected = nearestSerie && (s == nearestSerie);
 
-              series[s].path.style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
+           
+               
+              series[s].path.style("display","block")
+                .style("stroke", series[s].color)
+                .style("stroke-width", selected ? series[s].thickness + 2 : series[s].thickness )
+                .transition().duration(appSettings.transitionSpeed)
+                   .style("opacity", 1)
+                   .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
               series[s].legendLine.style("display","block")
+                .style("stroke", series[s].color)
                 .attr("x2",xPos)
-                .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
+                .transition().duration(appSettings.transitionSpeed)
+                   .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
               series[s].legendValue.style("display","block")
+                .style("fill", appSettings.legendTextColor)
                 .attr("x",xPos)
                 .text(d3.format(metaData.valueFormat)(currentValues[i].value))
-                .style("fill", hidden ? appSettings.hiddenLineColor : appSettings.legendTextColor);
+                .transition().duration(appSettings.transitionSpeed)
+                   .style("fill", hidden ? appSettings.hiddenLineColor : appSettings.legendTextColor);
               series[s].legendLineFix.style("display","block")
-                .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
+                .style("stroke", series[s].color)
+                .style("stroke-width", selected ? 3 : 1 )
+                .transition().duration(appSettings.transitionSpeed)
+                  .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
               //series[s].legendDot.style("display","block")
               //  .attr("cx",xPos)
               //  .style("fill", hidden ? appSettings.hiddenLineColor : series[s].color);
               series[s].legendText.style("display","block")
-                .style("fill", hidden ? appSettings.hiddenLineColor : appSettings.legendTextColor);
+                .style("fill", appSettings.legendTextColor)
+                .transition().duration(appSettings.transitionSpeed)
+                  .style("fill", hidden ? appSettings.hiddenLineColor : appSettings.legendTextColor);
               series[s].legendVisible = true;
               
               var noLegenPosChange = (series[s].lastLegendPosition && series[s].lastLegendPosition == i+1) 
@@ -672,16 +696,39 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
                   .style("text-anchor", px > width / 2 ? "end" : "start");
               }
               else if (nearestSerie) {
-                svgTooltipDot.style("display", "block")
-                    .attr("cx", px + "px")
-                    .attr("cy", py + "px")
-                    .style("stroke", series[nearestSerie].color)
-                    .style("fill", series[nearestSerie].color);
-                svgTooltipGroup.attr("transform", "translate(" + px + "," + (py-20) + ")");
-                svgTooltipText.text(tooltipTextFunctions[metaData.tooltipText]
+                    
+                    svgTooltipGroup. remove(); //hogy felülre kerüljön
+                    
+                    svgTooltipGroup = clippedArea.append("g")
+                      .attr("transform", "translate(" + px + "," + (py-20) + ")")
+                      .style("display", "block");
+                     svgTooltipREct = svgTooltipGroup.append("rect")
+                      .attr("fill", "rgba(255, 255, 255, .85)")
+                      .attr("stroke", "#dddddd")
+                      .attr("x", px > width / 2 ? "-260px"  : "0px" )
+                      .attr("y", py > height / 2 ? "-15px"  : "40px")
+                      .attr("width", "260px")
+                      .attr("height", "25px");
+
+
+                     svgTooltipText = svgTooltipGroup.append("text")
+                      .attr("x", px > width / 2 ? "-2px"  : "2px" )
+                      .attr("y", py > height / 2 ? "0px"  : "55px")
+                      .attr("font-size", "9pt")
+                      .attr("fill", "#000000")
+                      .text(tooltipTextFunctions[metaData.tooltipText]
                           (series[nearestSerie].name, d3.time.format(metaData.dateFormat)(new Date(tooltipInfo.tooltipDate)),
-                                                                                    d3.format(metaData.valueFormat)(tooltipInfo.tooltipValue)))
-                    .style("text-anchor", px > width / 2 ? "end" : "start");
+                                                                                      d3.format(metaData.valueFormat)(tooltipInfo.tooltipValue)))
+                      .style("text-anchor", px > width / 2 ? "end" : "start");
+
+              
+                     svgTooltipDot.style("display", "block")
+                      .attr("cx", px + "px")
+                      .attr("cy", py + "px")
+                      .style("stroke", series[nearestSerie].color)
+                      .style("fill", series[nearestSerie].color);     
+              
+    
               }
               else {
                 svgTooltipDot.style("display", "none");
@@ -700,12 +747,12 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
           var lineYPos = lastMouseY - appSettings.margin - appSettings.descriptionZoneHeight;
           if (lineXPos < 0 || lineXPos > width || lineYPos < 0 || lineYPos >= height  ) {
             svgSectionLineX.style("display", "none");
-            svgSectionLineY.style("display", "none");
+            //svgSectionLineY.style("display", "none");
       
           }
           else {
             svgSectionLineX.style("display", "block").attr("x1", lineXPos).attr("x2", lineXPos+"px");
-            svgSectionLineY.style("display", "block").attr("y1", lineYPos).attr("y2", lineYPos+"px");
+            //svgSectionLineY.style("display", "block").attr("y1", lineYPos).attr("y2", lineYPos+"px");
           }
       }
 
@@ -745,6 +792,16 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
           if (coords[0] < 0 || coords[0] >= totalWidth || coords[1] < 0 || coords[1] >= totalHeight)
               onMouseMove();
       }
+
+      ///// Shaded intervals ////
+      
+      var currentShadedIntervalScheme = "";
+      function updateShadedTintervals(scheme) {
+        if (metaData.shadedIntervals) 
+          for (si = 0; si < metaData.shadedIntervals.length; si++) 
+            svgShadedIntervals[si].style("display", metaData.shadedIntervals[si].scheme == currentShadedIntervalScheme ? "block" : "none" );
+      }
+          
 
       ///////////////////////////////
       //
@@ -855,7 +912,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
               return;
 
           svgSectionLineX.style("display", "none");
-          svgSectionLineY.style("display", "none");
+          //svgSectionLineY.style("display", "none");
           if (zoomTimer)
               clearTimeout(zoomTimer);
           zoomTimer = setTimeout(function () { onZoomTimer(); }, zoomTimeout);
@@ -876,12 +933,12 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
       .on("click", function () { onClick(); })
  
       var chartDescription = svg.append("text")
-      .attr("font-size", "8pt")
+      .attr("font-size", "10pt")
       .style("fill", appSettings.legendTextColor)
       for (var i = 0; i< metaData.description.length; i++)
         chartDescription.append("tspan")
           .attr("x", appSettings.margin)
-          .attr("y", appSettings.margin + 12*i)
+          .attr("y", appSettings.margin + 16*i)
           .text(metaData.description[i]);
       
       var clipRect = svg.append("svg:defs").append("svg:clipPath")
@@ -946,11 +1003,19 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
             svgShadedIntervals[si] = clippedArea.append("rect")
             //.classed("shadedIntervals", true)
             .style("fill", metaData.shadedIntervals[si].color)
-            .style("opacity", "0.3")
+            .style("display", "none")
+            .style("opacity", "0.5")
             .attr("y", "0px")
             .attr("height", height + "px");
         }
 
+      var svgZeroLine = clippedArea.append("line")
+        .attr("x1", 0).attr("x2", width)
+        .attr("y1", 0).attr("y2", height)
+        .style("stroke", "#aaaaaa" )
+        .style("stroke-width", 1 )
+        .style("display","none");
+ 
       var svgOverEndRectLeft = clippedArea.append("rect")
         .attr("fill", "#818181")
         //.classed("overEndRect", true)
@@ -967,29 +1032,39 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
         .attr("r", 4)
         .style("display", "none");
 
+
       var svgTooltipGroup = clippedArea.append("g")
+      var svgTooltipREct = svgTooltipGroup.append("rect")
+        .attr("fill", "#ffffff")
+        .attr("stroke", "#dddddd")
+        .attr("x", "0px")
+        .attr("y", "-18px")
+        .attr("width", "300px")
+        .attr("height", "20px");
+
       var svgTooltipText = svgTooltipGroup.append("text")
       //  .classed("tooltipText", true);
         .attr("font-size", "9pt")
         .attr("fill", "#818181");
-      var svgTooltipText2 = svgTooltipGroup.append("text")
+        
+      //var svgTooltipText2 = svgTooltipGroup.append("text")
       //  .classed("tooltipText", true);
-        .attr("font-size", "9pt")
-        .attr("fill", "#818181");
+      //  .attr("font-size", "9pt")
+      //  .attr("fill", "#818181");
 
         
       var svgSectionLineX = clippedArea.append("line")
         .attr("x1", width).attr("x2", width)
         .attr("y1", 0).attr("y2", height)
         .style("stroke", "#aaaaff" )
-        .style("stroke-dasharray", "10, 5, 1, 5" )
-        .style("stroke-width", 1 );
-      var svgSectionLineY = clippedArea.append("line")
-        .attr("x1", 0).attr("x2", width)
-        .attr("y1", height).attr("y2", height)
-        .style("stroke", "#aaaaff" )
-        .style("stroke-dasharray", "10, 5, 1, 5" )
-        .style("stroke-width", 1 );
+//        .style("stroke-dasharray", "10, 5, 1, 5" )
+       .style("stroke-width", 1 );
+ //     var svgSectionLineY = clippedArea.append("line")
+ //       .attr("x1", 0).attr("x2", width)
+ //       .attr("y1", height).attr("y2", height)
+//        .style("stroke", "#aaaaff" )
+//        .style("stroke-dasharray", "10, 5, 1, 5" )
+//        .style("stroke-width", 1 );
 
 
       ///////////////////////////
@@ -1005,7 +1080,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
       
       ///////////////////////////
       
-      d3.select("#downloadSVGlink")
+      /*d3.select("#downloadSVGlink")
       .attr("title", "Download chart as SVG file")
       .on("click", function () { 
           
@@ -1013,9 +1088,35 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
             directPost('download.php',  { "svg": svgContent } ); //directPost implemented in utils.js ....
 
                     
+      });*/
+      
+      d3.select("#shareLink")
+      .attr("title", "Megosztás")
+      .on("mouseover", function () { 
+          d3.select("#chartShareArea").style("display", "block");
+          d3.select("#shareButton").classed("shareButton_normal", false);
+          d3.select("#shareButton").classed("shareButton_hover", true);
+      })
+      .on("mouseout", function () { 
+          d3.select("#chartShareArea").style("display", "none");    
+          d3.select("#shareButton").classed("shareButton_normal", true);
+          d3.select("#shareButton").classed("shareButton_hover", false);
       });
       
-      d3.select("#shareFacebookLink")
+      d3.select("#aboutLink")
+      .attr("title", "A Defactóról")
+      .on("mouseover", function () { 
+          d3.select("#chartAboutArea").style("display", "block");
+          d3.select("#aboutButton").classed("shareButton_normal", false);
+          d3.select("#aboutButton").classed("shareButton_hover", true);
+      })
+      .on("mouseout", function () { 
+          d3.select("#chartAboutArea").style("display", "none");    
+          d3.select("#aboutButton").classed("shareButton_normal", true);
+          d3.select("#aboutButton").classed("shareButton_hover", false);
+      });
+      
+      /*d3.select("#shareFacebookLink")
       .attr("title", "Share on Facebook")
       .on("mouseover", function () { 
           d3.select("#shareFacebookArea").style("display", "block");
@@ -1049,7 +1150,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
       })
       .on("mouseout", function () { 
           d3.select("#shareTumblrArea").style("display", "none");         
-      });
+      });*/
       
       d3.select("#detailsButton")
       .on("click", function () { 
@@ -1057,14 +1158,28 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
           d3.select("#detailsButton").style("display", "none");
       })
       
+      d3.select("#detailsText")
+      .text(metaData.details);
+
       d3.select("#detailsPanel")
-      .text(metaData.details)
       .on("click", function () { 
           d3.select("#detailsButton").style("display", "block");
           d3.select("#detailsPanel").style("display", "none");
       })
       ///////////////////////////
-
+      
+      /*d3.select("#aboutUsButton")
+      .on("click", function () { 
+          d3.select("#aboutUsPanel").style("display", "block");
+          d3.select("#aboutUsButton").style("display", "none");
+      })
+      
+      d3.select("#aboutUsPanel")
+      .on("click", function () { 
+          d3.select("#aboutUsButton").style("display", "block");
+          d3.select("#aboutUsPanel").style("display", "none");
+      })*/
+      ///////////////////////////
       stateManager.refreshChartFunction = loadDataAndRedraw;
 
       ///////////////////////////

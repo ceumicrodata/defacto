@@ -56,8 +56,8 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <div id = "centeredContainer" >
-  <img src="page_layout/CEU-DEFACTO_interface-130625.jpg" style="z-index: -100; opacity: 1; position: absolute; left: 50%; top: 0px; margin-left:-701px;" >
-  <!--<img src="page_layout/ceumicrodata_logo.png" style="z-index: -200;" id="ceumicrodata_logo" > -->
+
+  <div id = mainTitle>DEFACTO.CEU.HU</div>
   <div id = "chart1" class="whiteBox">
 
     <div class = "mainMenu" ></div>
@@ -65,53 +65,65 @@
      
 
     <div class = "chartShareButtons" > 
-      <div id = shareFacebookLink>   <img src="page_layout/icon_share_facebook.png">
-        <div class = "chartShareArea" id = "shareFacebookArea"  >
-          <div class="fb-like" data-href="defacto.microdata.ceu.hu" 
-            data-colorscheme="light" data-layout="button_count" data-action="like" 
-            data-show-faces="false" data-send="true" > 
-          </div>
-        </div>    
-      </div>
-      <div id = shareGooglePlusLink> <img src="page_layout/icon_share_googleplus.png">
-        <div class = "chartShareArea" id = "shareGooglePlusArea">
-           <div class="g-plusone" data-size="medium"></div>
-        </div>    
-      </div>
-      <div id = shareTwitterLink>    <img src="page_layout/icon_share_twitter.png">
-        <div class = "chartShareArea" id = "shareTwitterArea"   >
+      <div id = shareLink>  
+        <div class="leftButton" id = shareButton class="shareButton_normal">
+          <img src="page_layout/icon_share.png">
+        </div>
+        <div class="leftButtonArea" id = "chartShareArea" >
+          <div class="fb-like" data-layout="button_count" data-action="recommend" data-show-faces="true" data-share="true"></div>
+        <br><br>
+          <div class="g-plusone" data-size="medium"></div>
+        <br><br>
           <a href="https://twitter.com/share" class="twitter-share-button" data-lang="hu">Tweet</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        </div>    
-      </div>
-      <div id = shareTumblrLink>     <img src="page_layout/icon_share_tumblr.png">
-        <div class = "chartShareArea" id = "shareTumblrArea"   >
-          <!-- Put this tag wherever you want your button to appear -->
+        <br><br>
           <span id="tumblr_button_abc123"></span>
-          <!-- Set these variables wherever convenient -->
           <script type="text/javascript">
-            var tumblr_link_url = "http://defacto.microdata.ceu.hu";
+            var tumblr_link_url = "http://defacto.ceu.hu";
             var tumblr_link_name = "CEU Microdata";
             var tumblr_link_description = "CEU Microdata";
           </script>
         </div>    
       </div>
-      <div id = downloadSVGlink>    
-        <img src="page_layout/icon_export_svg.png">
+           
+      <div id = aboutLink>  
+        <div class="leftButton" id = aboutButton class="shareButton_normal">
+          <img src="page_layout/icon_details.png">
+        </div>
+        <div class="leftButtonArea" id = "chartAboutArea" >
+          A Defactóról
+        </div>    
       </div>
+
+     
+      
+      <!--<div id = downloadSVGlink>    
+        <img src="page_layout/icon_export_svg.png">
+      </div>-->
+      
     </div>
      
       
     <div class = "chartContainer" ></div>
 
     <div id = "detailsButton">
-      ...
+      <img src="page_layout/icon_details.png">
     </div>
     
     <div id = "detailsPanel">
-  
+      <img src="page_layout/icon_cancel.png">
+      <div id = "detailsText"></div>
     </div>
 
+    <!--<div id = "aboutUsButton">
+      <a href = "#"> A Defactóról</a>
+    </div>
+    
+    <div id = "aboutUsPanel">
+      <img src="page_layout/icon_cancel.png">
+      <div id = "aboutUsText">
+      About us ... </div>
+    </div>-->
 
     
 

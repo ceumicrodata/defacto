@@ -3,12 +3,11 @@ var tickFormatFunctions = {
   { return d3.time.format( date.getMonth() ? "%b" : "%Y")(date); },
  "valueAxisDefault" : d3.format("g")
 }
-
 var adaptiveYAxisFunctions = { 
- "maxValueDefault" : function( maxVisibleValue, previousMaxValue) 
-  { return Math.ceil(maxVisibleValue / 4) * 4; },
- "minValueDefault" : function( minVisibleValue, previousMinValue) 
-  { return Math.floor(minVisibleValue / 4) * 4; }
+ "maxValueDefault" : function( maxVisibleValue, previousMaxValue, valueRange ) 
+  { var r = Math.ceil(valueRange / 6); return Math.ceil(maxVisibleValue / r) * r; },
+ "minValueDefault" : function( minVisibleValue, previousMinValue, valueRange ) 
+  { var r = Math.ceil(valueRange / 6); return Math.floor(minVisibleValue / r) * r; }
 }
 
 var tooltipTextFunctions = { 

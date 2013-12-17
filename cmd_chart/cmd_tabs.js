@@ -2,9 +2,9 @@
 //Draws the maim menu based on the metadata
 function updateMainMenu(initialMainId) {
   
-  var MAINMENU_ITEM_WIDTH = 120; //pt;
+  var MAINMENU_ITEM_WIDTH = 180; //pt;
   var MAINMENU_ITEM_HEIGHT = 28; //pt;
-  var MAINMENU_NUM_ITEMS_IN_ROW = 6; 
+  var MAINMENU_NUM_ITEMS_IN_ROW = 4; 
   var MAINMENU_NUM_ROWS = 2; 
    
   var mainMenu = d3.select(".mainMenu"); 
@@ -45,13 +45,13 @@ function updateMainMenu(initialMainId) {
       
    }
    
-   for (var pp = x; pp< MAINMENU_NUM_ITEMS_IN_ROW; pp++) 
+   /*for (var pp = x; pp< MAINMENU_NUM_ITEMS_IN_ROW; pp++) 
       mainMenu.append("div")
       .classed("mainMenuItem", true)
       .classed("mainMenuItemInactive", true)
       .style ("left" , (pp*120) + "pt")
       .style ("top"  , (y*MAINMENU_ITEM_HEIGHT) + "pt") 
-      .text("  ");
+      .text("  ");*/
       
 }
 
@@ -84,12 +84,21 @@ function updateSubMenu(mainId, initialSubId) {
     s++;
    }
 }
-
+  
+var lastInitialChartPath = null;
+   
 //calling globalStateManager.changeState() directly: onclick, website initialization
 function changeChart(chartPath) {
   var url = "?chartPath="+chartPath;
   var title = "CEU Microdata"; //TODO
+  lastInitialChartPath = chartPath;
   globalStateManager.changeState( { "chartPath" : chartPath }, title,  url );
+  
+  d3.select("body")
+    .on("keydown", function() {
+        if (d3.event.keyCode == 27 && lastInitialChartPath)
+            changeChart(lastInitialChartPath);
+        });
 }
 
 //changing the chart

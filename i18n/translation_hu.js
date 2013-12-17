@@ -4,10 +4,12 @@ var translations = {
   "HU"	: "Magyarország",
   "AU"	:"Ausztria",
   "PL" : "Lengyelország",
-  "SL" : "Szlovákia",
+  "SK" : "Szlovákia",
 
   "EU15" : "Európai Unió (15)",
-  "V3" : "Visegrádi országok (3)"
+  "V3" : "Visegrádi országok (3)",
+  "EA17" : "EURO övezet (17)",
+  "EA" : "EURO övezet"
 }
 
 function _T(text) {
