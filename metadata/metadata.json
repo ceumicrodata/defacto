@@ -4,8 +4,7 @@
             "gdp": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "Egy lakosra jutó éves bruttó hazai termék (GDP) euróban.", 
-                    ""
+                    "Egy lakosra jutó éves bruttó hazai termék (GDP) euróban."
                 ], 
                 "title": "GDP/fő (euró)", 
                 "valueMin": 0, 
@@ -45,8 +44,9 @@
             "gdpppp": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "Egy lakosra jutó éves bruttó hazai termék (GDP) vásárlóerő-paritáson. A GDP vásárlóerő-paritásra", 
-                    "történő átszámítása kiszűri az országok árszint-különbségeiből eredő eltéréseket."
+                    "Egy lakosra jutó éves bruttó hazai termék (GDP) vásárlóerő-paritáson. A GDP", 
+                    "vásárlóerő-paritásra történő átszámítása kiszűri az országok", 
+                    "árszint-különbségeiből eredő eltéréseket."
                 ], 
                 "title": "GDP/fő (PPP)", 
                 "valueMin": 0, 
@@ -91,8 +91,8 @@
             "gdpgrowth": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "A bruttó hazai termék (GDP) volumenének százalékos változása az előző év azonos negyedévéhez képest.", 
-                    ""
+                    "A bruttó hazai termék (GDP) volumenének százalékos változása az előző év azonos", 
+                    "negyedévéhez képest."
                 ], 
                 "title": "GDP növekedése", 
                 "valueMin": 0, 
@@ -132,8 +132,8 @@
             "industrygrowth": {
                 "dateMax": "2013-10-31", 
                 "description": [
-                    "Az ipari termelés volumenének százalékos változása az előző év azonos hónapjához képest. A havi", 
-                    "növekedési ütemeket háromhavi mozgóátlagolással simítottuk."
+                    "Az ipari termelés volumenének százalékos változása az előző év azonos hónapjához", 
+                    "képest. A havi növekedési ütemeket háromhavi mozgóátlagolással simítottuk."
                 ], 
                 "title": "Ipari termelés növekedése", 
                 "valueMin": 0, 
@@ -173,8 +173,8 @@
             "investment": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "A bruttó beruházás és a bruttó hazai termék (GDP) hányadosa. A negyedéves adatot négy negyedéves", 
-                    "mozgóátlagolással simítottuk."
+                    "A bruttó beruházás és a bruttó hazai termék (GDP) hányadosa. A negyedéves adatot", 
+                    "négy negyedéves mozgóátlagolással simítottuk."
                 ], 
                 "title": "Beruházási ráta", 
                 "valueMin": 0, 
@@ -219,8 +219,7 @@
             "unemployment": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "A munkát keres?k aránya a munkát keres?k és foglalkoztatottak között.", 
-                    ""
+                    "A munkát keres?k aránya a munkát keres?k és foglalkoztatottak között."
                 ], 
                 "title": "Munkanélküliségi ráta", 
                 "valueMin": 0, 
@@ -260,8 +259,7 @@
             "laborforce": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "A munkát keres?k és foglalkoztatottak aránya a 15-74 éves korosztályban.", 
-                    ""
+                    "A munkát keres?k és foglalkoztatottak aránya a 15-74 éves korosztályban."
                 ], 
                 "title": "Aktivitási ráta", 
                 "valueMin": 0, 
@@ -306,8 +304,8 @@
             "inflation": {
                 "dateMax": "2013-10-31", 
                 "description": [
-                    "A fogyasztói kosár árának százalékos változása az előző év azonos hónapjához képest.", 
-                    ""
+                    "A fogyasztói kosár árának százalékos változása az előző év azonos hónapjához", 
+                    "képest."
                 ], 
                 "title": "Infláció", 
                 "valueMin": 0, 
@@ -352,8 +350,7 @@
             "governmentdebt": {
                 "dateMax": "2013-06-30", 
                 "description": [
-                    "Államadósság a bruttó hazai termék (GDP) százalékában.", 
-                    ""
+                    "Államadósság a bruttó hazai termék (GDP) százalékában."
                 ], 
                 "title": "Államadósság", 
                 "valueMin": 0, 
@@ -393,8 +390,8 @@
             "budgetannual": {
                 "dateMax": "2012-12-31", 
                 "description": [
-                    "A költségvetés éves egyenlege a bruttó hazai termék (GDP) százalékában. Negatív érték költségvetési", 
-                    "hiányt, pozitív érték költségvetési többletet jelez."
+                    "A költségvetés éves egyenlege a bruttó hazai termék (GDP) százalékában. Negatív", 
+                    "érték költségvetési hiányt, pozitív érték költségvetési többletet jelez."
                 ], 
                 "title": "Költségvetés egyenlege (éves)", 
                 "valueMin": 0, 
@@ -434,8 +431,8 @@
             "budgetquaterly": {
                 "dateMax": "2013-06-30", 
                 "description": [
-                    "A költségvetés negyedéves egyenlege a bruttó hazai termék (GDP) százalékában. Negatív érték", 
-                    "költségvetési hiányt, pozitív érték költségvetési többletet jelez."
+                    "A költségvetés negyedéves egyenlege a bruttó hazai termék (GDP) százalékában.", 
+                    "Negatív érték költségvetési hiányt, pozitív érték költségvetési többletet jelez."
                 ], 
                 "title": "Költségvetés egyenlege (negyedéves)", 
                 "valueMin": 0, 
@@ -475,8 +472,8 @@
             "primarybudget": {
                 "dateMax": "2012-12-31", 
                 "description": [
-                    "A költségvetés elsődleges egyenlege a bruttó hazai termék (GDP) százalékában. Az elsődleges egyenleg", 
-                    "az államadósságon képződő kamatkiadások nélküli egyenleg."
+                    "A költségvetés elsődleges egyenlege a bruttó hazai termék (GDP) százalékában. Az", 
+                    "elsődleges egyenleg az államadósságon képződő kamatkiadások nélküli egyenleg."
                 ], 
                 "title": "Költségvetés els?dleges egyenlege", 
                 "valueMin": 0, 
@@ -521,8 +518,8 @@
             "tradebalance": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "Az áruk és szolgáltatások külkereskedelmének egyenlege a bruttó hazai termék (GDP) százalékában.", 
-                    ""
+                    "Az áruk és szolgáltatások külkereskedelmének egyenlege a bruttó hazai termék", 
+                    "(GDP) százalékában."
                 ], 
                 "title": "Nettó export", 
                 "valueMin": 0, 
@@ -562,8 +559,7 @@
             "currentaccount": {
                 "dateMax": "2013-06-30", 
                 "description": [
-                    "A folyó fizetési mérleg egyenlege a bruttó hazai termék (GDP) százalékában.", 
-                    ""
+                    "A folyó fizetési mérleg egyenlege a bruttó hazai termék (GDP) százalékában."
                 ], 
                 "title": "Folyó fizetési mérleg", 
                 "valueMin": 0, 
@@ -603,8 +599,9 @@
             "externaldebt": {
                 "dateMax": "2013-06-30", 
                 "description": [
-                    "Nettó külföldi adósság a bruttó hazai termék (GDP) százalékában. A nettó külföldi adósság az összes", 
-                    "gazdasági szerepl? külfölddel szembeni tartozásának és követelésének különbsége."
+                    "Nettó külföldi adósság a bruttó hazai termék (GDP) százalékában. A nettó", 
+                    "külföldi adósság az összes gazdasági szerepl? külfölddel szembeni tartozásának", 
+                    "és követelésének különbsége."
                 ], 
                 "title": "Külső adósság", 
                 "valueMin": 0, 
@@ -649,8 +646,7 @@
             "competitiveness": {
                 "dateMax": "2013-06-30", 
                 "description": [
-                    "Bérköltség az EU27 országaihoz képest (emelkedés = javuló versenyképesség)", 
-                    ""
+                    "Bérköltség az EU27 országaihoz képest (emelkedés = javuló versenyképesség)"
                 ], 
                 "title": "Versenyképesség", 
                 "valueMin": 0, 
@@ -686,8 +682,7 @@
             "laborproductivity": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "Egy munkaóra alatt megtermelt jövedelem a 2005. évhez viszonyítva.", 
-                    ""
+                    "Egy munkaóra alatt megtermelt jövedelem a 2005. évhez viszonyítva."
                 ], 
                 "title": "Munka termelékenysége", 
                 "valueMin": 0, 
@@ -727,8 +722,8 @@
             "exportgrowth": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "Az áruexport előző év azonos hónapjához képest vett százalékos változása, amit háromhavi", 
-                    "mozgóátlaggal simítottunk."
+                    "Az áruexport előző év azonos hónapjához képest vett százalékos változása, amit", 
+                    "háromhavi mozgóátlaggal simítottunk."
                 ], 
                 "title": "Export növekedése", 
                 "valueMin": 0, 
@@ -773,8 +768,8 @@
             "exchangerate": {
                 "dateMax": "2013-10-31", 
                 "description": [
-                    "Nemzeti valuta árfolyama az euróval szemben (emelkedés = nemzeti valuta leértékelődése), 2005.", 
-                    "januárhoz viszonyítva."
+                    "Nemzeti valuta árfolyama az euróval szemben (emelkedés = nemzeti valuta", 
+                    "leértékelődése), 2005. januárhoz viszonyítva."
                 ], 
                 "title": "Euróárfolyam", 
                 "valueMin": 0, 
@@ -802,8 +797,7 @@
             "longtermyield": {
                 "dateMax": "2013-10-31", 
                 "description": [
-                    "Nemzeti valutában jegyzett hosszú lejáratú államkötvények éves hozama.", 
-                    ""
+                    "Nemzeti valutában jegyzett hosszú lejáratú államkötvények éves hozama."
                 ], 
                 "title": "Hosszútávú kamatok", 
                 "valueMin": 0, 
