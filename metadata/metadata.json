@@ -259,7 +259,8 @@
             "laborforce": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "A munkát keresők és foglalkoztatottak aránya a 15-74 éves korosztályban."
+                    "A munkát keresők és foglalkoztatottak aránya a teljes népességhez képest a 15-74", 
+                    "éves korosztályban."
                 ], 
                 "title": "Aktivitási ráta", 
                 "valueMin": 0, 
@@ -646,7 +647,8 @@
             "competitiveness": {
                 "dateMax": "2013-06-30", 
                 "description": [
-                    "Bérköltség az EU27 országaihoz képest (emelkedés = javuló versenyképesség)"
+                    "Bérköltség az EU27 országaihoz képest a 2005. évhez viszonyítva (emelkedés =", 
+                    "javuló versenyképesség)"
                 ], 
                 "title": "Versenyképesség", 
                 "valueMin": 0, 
