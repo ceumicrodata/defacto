@@ -7,7 +7,8 @@ import sys
 import codecs
 
 METADATA_CSV_PATH = './metadata/series_front_metadata.csv'
-METADATA_JSON_TARGET = './metadata/metadata.json'
+# write directly to frontend
+METADATA_JSON_TARGET = '../frontend/metadata/metadata.json'
 CHART_DEFAULTS = dict(valueFormat=".1f", valueMin=0, valueMax=30)
 
 
@@ -17,9 +18,7 @@ def generate_queries(indicator, eu_region):
             geo_status = 'region'
         else:
             geo_status = 'country'
-        # return u'http://db.microdata.io/db/defacto/defacto_{}/{}/{}.json'.format(indicator, geo_status, geo_code)
-        # return u'http://db.microdata.io/db/defacto/defacto/indicator/{}/{}/{}.json'.format(indicator, geo_status, geo_code)
-        return u'http://defacto.microdata.ceu.hu/DEV/data/{}/{}.json'.format(indicator, geo_code)
+        return u'http://defacto.ceu.hu/data/upload/{}/{}.json'.format(indicator, geo_code)
     queries = list()
     if indicator == 'exchangerate':
         queries.append(dict([("url", generate_url(indicator, 'HUF')), ("queryDetails", "referenceCountry")]))
@@ -50,6 +49,7 @@ def generate_chart(indicator, chart_title, description, details, eu_region, date
     chart.update([("details", details)])
     chart.update([("dateMin", dateMin)])
     chart.update([("dateMax", dateMax)])
+    chart.update([("dateFrom", dateMin)])
     chart.update([("dateTo", dateMax)])
     chart.update(CHART_DEFAULTS)
     chart.update([("queries", generate_queries(indicator, eu_region))])
@@ -59,7 +59,7 @@ metadata = defaultdict(defaultdict)
 topic_list = []
 indicator_lists = defaultdict(list)
 with open(METADATA_CSV_PATH, 'rb') as file:
-    reader = unicodecsv.DictReader(file, delimiter=';', encoding='iso-8859-2')
+    reader = unicodecsv.DictReader(file, delimiter=',', encoding='utf-8')
     i=0
     for row in reader:
         if row['topic'] not in metadata.keys():
