@@ -97,34 +97,6 @@ div {
   cursor:pointer;
 }
 
-#aboutUsButton {
-  cursor:pointer;
-  position: absolute;
-  right: 20pt;
-  top: 78pt;
-  width: 200pt;
-  height: 15pt;
-  text-align: right;  
-}
-
-#aboutUsPanel {
-  display: none;
-  z-index: 200;
-  position: absolute;
-  right: 20pt;
-  top: 70pt;
-  width: 200pt;
-  padding: 30px;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  text-align: left;   
-}
-#aboutUsPanel img {
-  position:absolute;
-  top: 4pt;
-  right: 4pt;
-  cursor:pointer;
-}
 
 .chartShareButtons {
   position: absolute;

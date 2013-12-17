@@ -697,41 +697,38 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
               }
               else if (nearestSerie) {
                     
-                    svgTooltipGroup. remove();
+                    svgTooltipGroup. remove(); //hogy felülre kerüljön
                     
                     svgTooltipGroup = clippedArea.append("g")
-       svgTooltipREct = svgTooltipGroup.append("rect")
-        .attr("fill", "rgba(255, 255, 255, .85)")
-        .attr("stroke", "#dddddd")
-        .attr("x", px > width / 2 ? "-260px"  : "0px" )
-        .attr("y", "-15px")
-        .attr("width", "260px")
-        .attr("height", "25px");
+                      .attr("transform", "translate(" + px + "," + (py-20) + ")")
+                      .style("display", "block");
+                     svgTooltipREct = svgTooltipGroup.append("rect")
+                      .attr("fill", "rgba(255, 255, 255, .85)")
+                      .attr("stroke", "#dddddd")
+                      .attr("x", px > width / 2 ? "-260px"  : "0px" )
+                      .attr("y", py > height / 2 ? "-15px"  : "40px")
+                      .attr("width", "260px")
+                      .attr("height", "25px");
 
-       svgTooltipText = svgTooltipGroup.append("text")
-      //  .classed("tooltipText", true);
-        .attr("font-size", "9pt")
-        .attr("fill", "#666666");
-              
-              
-              
-              
-              
-              
-              
-              
-              
-                svgTooltipDot.style("display", "block")
-                    .attr("cx", px + "px")
-                    .attr("cy", py + "px")
-                    .style("stroke", series[nearestSerie].color)
-                    .style("fill", series[nearestSerie].color);
-                svgTooltipGroup.attr("transform", "translate(" + px + "," + (py-20) + ")")
-                    .style("display", "block");
-                svgTooltipText.text(tooltipTextFunctions[metaData.tooltipText]
+
+                     svgTooltipText = svgTooltipGroup.append("text")
+                      .attr("x", px > width / 2 ? "-2px"  : "2px" )
+                      .attr("y", py > height / 2 ? "0px"  : "55px")
+                      .attr("font-size", "9pt")
+                      .attr("fill", "#000000")
+                      .text(tooltipTextFunctions[metaData.tooltipText]
                           (series[nearestSerie].name, d3.time.format(metaData.dateFormat)(new Date(tooltipInfo.tooltipDate)),
-                                                                                    d3.format(metaData.valueFormat)(tooltipInfo.tooltipValue)))
-                    .style("text-anchor", px > width / 2 ? "end" : "start");
+                                                                                      d3.format(metaData.valueFormat)(tooltipInfo.tooltipValue)))
+                      .style("text-anchor", px > width / 2 ? "end" : "start");
+
+              
+                     svgTooltipDot.style("display", "block")
+                      .attr("cx", px + "px")
+                      .attr("cy", py + "px")
+                      .style("stroke", series[nearestSerie].color)
+                      .style("fill", series[nearestSerie].color);     
+              
+    
               }
               else {
                 svgTooltipDot.style("display", "none");
@@ -1094,16 +1091,29 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
       });*/
       
       d3.select("#shareLink")
-      .attr("title", "Share")
+      .attr("title", "Megosztás")
       .on("mouseover", function () { 
-          d3.select(".chartShareArea").style("display", "block");
+          d3.select("#chartShareArea").style("display", "block");
           d3.select("#shareButton").classed("shareButton_normal", false);
           d3.select("#shareButton").classed("shareButton_hover", true);
       })
       .on("mouseout", function () { 
-          d3.select(".chartShareArea").style("display", "none");    
+          d3.select("#chartShareArea").style("display", "none");    
           d3.select("#shareButton").classed("shareButton_normal", true);
           d3.select("#shareButton").classed("shareButton_hover", false);
+      });
+      
+      d3.select("#aboutLink")
+      .attr("title", "A Defactóról")
+      .on("mouseover", function () { 
+          d3.select("#chartAboutArea").style("display", "block");
+          d3.select("#aboutButton").classed("shareButton_normal", false);
+          d3.select("#aboutButton").classed("shareButton_hover", true);
+      })
+      .on("mouseout", function () { 
+          d3.select("#chartAboutArea").style("display", "none");    
+          d3.select("#aboutButton").classed("shareButton_normal", true);
+          d3.select("#aboutButton").classed("shareButton_hover", false);
       });
       
       /*d3.select("#shareFacebookLink")
@@ -1158,7 +1168,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
       })
       ///////////////////////////
       
-      d3.select("#aboutUsButton")
+      /*d3.select("#aboutUsButton")
       .on("click", function () { 
           d3.select("#aboutUsPanel").style("display", "block");
           d3.select("#aboutUsButton").style("display", "none");
@@ -1168,7 +1178,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
       .on("click", function () { 
           d3.select("#aboutUsButton").style("display", "block");
           d3.select("#aboutUsPanel").style("display", "none");
-      })
+      })*/
       ///////////////////////////
       stateManager.refreshChartFunction = loadDataAndRedraw;
 
