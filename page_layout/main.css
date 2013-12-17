@@ -97,6 +97,34 @@ div {
   cursor:pointer;
 }
 
+#aboutUsButton {
+  cursor:pointer;
+  position: absolute;
+  right: 20pt;
+  top: 78pt;
+  width: 200pt;
+  height: 15pt;
+  text-align: right;  
+}
+
+#aboutUsPanel {
+  display: none;
+  z-index: 200;
+  position: absolute;
+  right: 20pt;
+  top: 70pt;
+  width: 200pt;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  text-align: left;   
+}
+#aboutUsPanel img {
+  position:absolute;
+  top: 4pt;
+  right: 4pt;
+  cursor:pointer;
+}
 
 .chartShareButtons {
   position: absolute;
@@ -107,10 +135,10 @@ div {
 
 }
 
-#shareButton {
+
+.leftButton {
   position: absolute;
   left: 0px;
-  top: 0px;
   width: 21pt;
   height: 21pt;
   margin-left: -1px;
@@ -118,6 +146,12 @@ div {
   background-color: #ffffff;
 }
 
+#shareButton {
+  top: 0px;
+}
+#aboutButton {
+  top: 30pt;
+}
 .shareButton_normal {
   border-left: 1px solid #dddddd; 
 }
@@ -132,18 +166,25 @@ div {
 #shareButton img{
   margin-left:  3px;
 }
+#aboutButton img{
+  margin-left:  1px;
+}
 
-
-.chartShareArea {
-  top: 0pt;
+.leftButtonArea {
   z-index: 50;
   position: absolute;
   background-color: #ffffff;  
-  border: 1px solid #dddddd; 
-  border: 1px solid #dddddd; 
   border: 1px solid #dddddd; 
   width: 200px;
   padding: 20px;
   right: 30pt;
   display: none;
+}
+
+#chartShareArea {
+  top: 0pt;
+}
+
+#chartAboutArea {
+  top: 30pt;
 }
