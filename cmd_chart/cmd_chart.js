@@ -28,6 +28,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
   ////////////////////////////////
   
   function getUrlSearchParams() {
+      console.log (window.location.search.substring(1));
       var pairs = window.location.search.substring(1).split("&"),  obj = {}, pair, i;
       for (i in pairs) {
           pair = pairs[i].split("=");
