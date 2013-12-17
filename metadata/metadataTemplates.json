@@ -23,28 +23,28 @@
           "isVisible" : "*",  
           "serieKey"  : "country", 
           "filter"    : "`country` = 'hungary'", 
-          "color"     : "#ff0000", 
+          "color"     : "#FD4814", 
           "thickness" : 4, 
           "onClick"   : 0      
       },
       "regions" : { 
           "isVisible" : "", 
           "serieKey"  : "country",
-          "color"     : "colorTable0",
+          "color"     : "0081AC",
           "thickness" : 2, 
           "onClick"   : 1    
       },
       "regions_nc" : { 
           "isVisible" : "", 
           "serieKey"  : "country",
-          "color"     : "#99ccaa",
+          "color"     : "#82CD55",
           "thickness" : 2, 
           "onClick"   : 0    
       },
       "regions_nc1" : { 
           "isVisible" : "", 
           "serieKey"  : "country",
-          "color"     : "#9999ff",
+          "color"     : "#82CD55",
           "thickness" : 2, 
           "onClick"   : 0    
       },
@@ -53,7 +53,7 @@
           "serieKey"  : "country",    
           "join"      : "`countriesInRegions` ON `countriesInRegions`.`country` = `countries`.`country`", 
           "filter"    : "`region` = 'V3'",
-          "color"     : "#002266",
+          "color"     : "#20E8C7",
           "thickness" : 2,        
           "onClick"   : 0      
       },
@@ -62,7 +62,7 @@
           "serieKey"  : "country",    
           "join"      : "`countriesInRegions` ON `countriesInRegions`.`country` = `countries`.`country`", 
           "filter"    : "`region` = 'V3'",
-          "color"     : "colorTable1",
+          "color"     : "77C0FC",
           "thickness" : 2,        
           "onClick"   : 0      
       },
@@ -71,7 +71,7 @@
           "serieKey"  : "country",    
           "join"      : "`countriesInRegions` ON `countriesInRegions`.`country` = `countries`.`country`", 
           "filter"    : "`region` = 'V3'",
-          "color"     : "#0066cc",
+          "color"     : "#438FCE",
           "thickness" : 2,        
           "onClick"   : 0      
       },
@@ -80,7 +80,7 @@
           "serieKey"  : "country", 
           "join"      : "`countriesInRegions` ON `countriesInRegions`.`country` = `countries`.`country`", 
           "filter"    : "`region` = 'eu15'",    
-          "color"     : "#0099ff",
+          "color"     : "#82CD55",
           "thickness" : 2,        
           "onClick"   : 0           
       } 
