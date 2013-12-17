@@ -1,6 +1,8 @@
 var tickFormatFunctions = {
  "dateAxisDefault" : function(date) 
   { return d3.time.format( date.getMonth() ? "%b" : "%Y")(date); },
+ "dateAxisAnnual" : function(date) 
+  { return d3.time.format( date.getFullYear() ? "%Y" : "%Y")(date); },
  "valueAxisDefault" : d3.format("g")
 }
 var adaptiveYAxisFunctions = { 
