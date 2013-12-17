@@ -10,7 +10,7 @@
   <META HTTP-EQUIV="expires" CONTENT="0">
   <META HTTP-EQUIV="pragma" CONTENT="no-cache">
   <META NAME="ROBOTS" CONTENT="INDEX,FOLLOW,NOARCHIVE">
-  <META NAME="author" CONTENT="CEU Microdata">
+  <META NAME="author" CONTENT="Defacto">
   <META NAME="resource-type" CONTENT="document">
   <META NAME="revisit-after" CONTENT="1">
 
@@ -47,7 +47,20 @@
 <body>  
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>
+  window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+      appId      : '584264061655036',                        // App ID from the app dashboard
+      status     : true,                                 // Check Facebook Login status
+      xfbml      : true                                  // Look for social plugins on the page
+    });
+
+    // Additional initialization code such as adding Event Listeners goes here
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
@@ -79,6 +92,7 @@
         <br><br>
           <span id="tumblr_button_abc123"></span>
           <script type="text/javascript">
+          /// FIXME: take URL with GET params
             var tumblr_link_url = "http://defacto.ceu.hu";
             var tumblr_link_name = "Defacto";
             var tumblr_link_description = "Defacto";

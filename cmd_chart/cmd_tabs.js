@@ -90,7 +90,7 @@ var lastInitialChartPath = null;
 //calling globalStateManager.changeState() directly: onclick, website initialization
 function changeChart(chartPath, pars) {
   var url = "?chartPath="+chartPath;
-  var title = "CEU Microdata"; //TODO
+  var title = "Defacto";
   lastInitialChartPath = chartPath;
   var state = { "chartPath" : chartPath };
   

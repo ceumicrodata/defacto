@@ -84,7 +84,7 @@ function cmd_chart(selection, chartPath, metaData, metadataTemplates, metadataDe
         var dateFrom = d3.time.format(metaData.dateFormat)(new Date(stateData.timeFrom));
         var dateTo = d3.time.format(metaData.dateFormat)(new Date(stateData.timeTo));
         var url = "?chartPath="+stateData.chartPath+"&keyPath=" + stateData.keyPath + "&dateFrom=" + dateFrom + "&dateTo=" + dateTo;
-        var title = "CEU Microdata"; //TODO
+        var title = "Defacto"; //TODO
 
         if (stateManager.isHistoryEnabled) {
             stateManager.changeState(stateData, title, url);
