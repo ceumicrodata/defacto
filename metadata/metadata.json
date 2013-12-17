@@ -730,8 +730,8 @@
                 "title": "Export növekedése", 
                 "valueMin": 0, 
                 "dateTo": "2013-09-30", 
-                "dateFrom": "2000-03-31", 
-                "dateMin": "2000-03-31", 
+                "dateFrom": "2003-04-30", 
+                "dateMin": "2003-04-30", 
                 "details": "A teljes áruexport-forgalom euróban kifejezett értékének a megelőző év azonos havához képest vett százalékos változása. A havi frekvenciájú növekedési ütemeket háromhavi visszatekintő mozgóátlagolással simítottuk. A Visegrád átlag számításánál a százalékos változás bázisidőszakának euróban kifejezett exportértékével súlyoztunk.", 
                 "queries": [
                     {
