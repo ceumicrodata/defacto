@@ -37,14 +37,17 @@ def generate_queries(indicator, eu_region):
 
 def generate_chart(indicator, chart_title, description, details, eu_region, dateMin, dateMax):
     chart = dict([("title", chart_title)])
-    def wrap_description(text, row_lim=100):
+    def wrap_description(text, row_lim=80):
+        if len(text) <= row_lim:
+            return [text.strip()]
+        counter = row_lim
         while True:
-            if len(text) <= row_lim:
+            if text[counter] in [' ']:
                 break
-            if text[row_lim] == ' ':
-                break
-            row_lim -= 1
-        return [text[:row_lim], text[row_lim:].strip()]
+            counter -= 1
+        output = [text[:counter]]
+        output.extend(wrap_description(text[counter:].strip(), row_lim=row_lim))
+        return output
     chart.update([("description", wrap_description(description))])
     chart.update([("details", details)])
     chart.update([("dateMin", dateMin)])
