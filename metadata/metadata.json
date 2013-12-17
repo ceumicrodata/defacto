@@ -219,7 +219,7 @@
             "unemployment": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "A munkát keres?k aránya a munkát keres?k és foglalkoztatottak között."
+                    "A munkát keresők aránya a munkát keresők és foglalkoztatottak között."
                 ], 
                 "title": "Munkanélküliségi ráta", 
                 "valueMin": 0, 
@@ -259,7 +259,7 @@
             "laborforce": {
                 "dateMax": "2013-09-30", 
                 "description": [
-                    "A munkát keres?k és foglalkoztatottak aránya a 15-74 éves korosztályban."
+                    "A munkát keresők és foglalkoztatottak aránya a 15-74 éves korosztályban."
                 ], 
                 "title": "Aktivitási ráta", 
                 "valueMin": 0, 
@@ -475,7 +475,7 @@
                     "A költségvetés elsődleges egyenlege a bruttó hazai termék (GDP) százalékában. Az", 
                     "elsődleges egyenleg az államadósságon képződő kamatkiadások nélküli egyenleg."
                 ], 
-                "title": "Költségvetés els?dleges egyenlege", 
+                "title": "Költségvetés elsődleges egyenlege", 
                 "valueMin": 0, 
                 "dateTo": "2012-12-31", 
                 "dateFrom": "1995-12-31", 
@@ -600,7 +600,7 @@
                 "dateMax": "2013-06-30", 
                 "description": [
                     "Nettó külföldi adósság a bruttó hazai termék (GDP) százalékában. A nettó", 
-                    "külföldi adósság az összes gazdasági szerepl? külfölddel szembeni tartozásának", 
+                    "külföldi adósság az összes gazdasági szereplő külfölddel szembeni tartozásának", 
                     "és követelésének különbsége."
                 ], 
                 "title": "Külső adósság", 
