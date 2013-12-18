@@ -355,6 +355,11 @@
                 ], 
                 "title": "Államadósság", 
                 "valueMin": 0, 
+                  "timeAxis" : {
+                    "tickCount": 8, 
+                    "subdivide" : 0,   
+                    "tickFormat": "dateAxisAnnual"
+                  }, 
                 "dateTo": "2013-06-30", 
                 "dateFrom": "2000-03-31", 
                 "dateMin": "2000-03-31", 
@@ -781,16 +786,16 @@
                 "details": "A nominális árfolyam egy euro nemzeti valutában kifejezett értéke. A havi átlagos árfolyamok idősorait 2005. január átlaga = 100 formájú indexre számítottuk át. Szlovákiát euroövezeti tagsága miatt nem szerepeltetjük.", 
                 "queries": [
                     {
-                        "url": "http://defacto.ceu.hu/data/upload/exchangerate/HU.json", 
+                        "url": "http://defacto.ceu.hu/data/upload/exchangerate/HUF.json", 
                         "queryDetails": "referenceCountry"
                     }, 
                     {
-                        "url": "http://defacto.ceu.hu/data/upload/exchangerate/CZ.json", 
-                        "queryDetails": "v4_2"
+                        "url": "http://defacto.ceu.hu/data/upload/exchangerate/CZK.json", 
+                        "queryDetails": "regions_nc"
                     }, 
                     {
-                        "url": "http://defacto.ceu.hu/data/upload/exchangerate/PL.json", 
-                        "queryDetails": "v4_3"
+                        "url": "http://defacto.ceu.hu/data/upload/exchangerate/PLN.json", 
+                        "queryDetails": "regions_nc1"
                     }
                 ], 
                 "valueFormat": ".1f", 
