@@ -1,0 +1,116 @@
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+  <HEAD>
+  
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+  <META HTTP-EQUIV="Content-Language" CONTENT="hu">
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <META NAME="ROBOTS" CONTENT="INDEX,FOLLOW,NOARCHIVE">
+  <META NAME="author" CONTENT="Defacto">
+  <META NAME="resource-type" CONTENT="document">
+  <META NAME="revisit-after" CONTENT="1">
+
+  <title>Defacto</title>
+
+  <!-- page style --> 
+  <link media="all" rel="stylesheet" href="page_layout/embed.css" type="text/css">
+
+
+  <!-- jquery --> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script src="includes/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>  <!-- history.js -->
+ 
+  <!-- d3 --> 
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <!--<script src="http://d3js.org/d3.v2.js"></script>--> 
+
+  <!-- cmd_chart --> 
+  <!-- <link media="all" rel="stylesheet" href="cmd_chart/cmd_chart.css" type="text/css">--> 
+  <link media="all" rel="stylesheet" href="cmd_chart/cmd_tabs.css" type="text/css">
+  <SCRIPT type="text/javascript" src="i18n/translation_hu.js"></SCRIPT>   
+  <SCRIPT type="text/javascript" src="cmd_chart/utils.js"></SCRIPT>   
+  <SCRIPT type="text/javascript" src="colours/colours.js"></SCRIPT>   
+  <SCRIPT type="text/javascript" src="cmd_chart/cmd_services.js"></SCRIPT>   
+  <SCRIPT type="text/javascript" src="cmd_chart/cmd_chart.js"></SCRIPT>   
+  <SCRIPT type="text/javascript" src="cmd_chart/cmd_tabs.js"></SCRIPT>   
+  <SCRIPT type="text/javascript" src="metadata/metadataFunctions.js"></SCRIPT>   
+
+</HEAD>
+
+ 
+
+<body>  
+
+
+  <div id = "chart1" class="whiteBox">
+
+    <div class = "chartContainer" width="600px" height="360px"></div>
+
+    <div id = "detailsButton">
+      <img src="page_layout/icon_details.png">
+    </div>
+    
+    <div id = "detailsPanel">
+      <img src="page_layout/icon_cancel.png">
+      <div id = "detailsText"></div>
+    </div>
+
+    <div id = "defactoLink"><a id = "clickable" href="#">Defacto</a></div>
+
+                                       
+  </div>
+  
+
+
+
+<script type="text/javascript">
+
+  var globalSettings = {
+          "transitionSpeed"          : 1000,  //in msec
+          "lineSenitiveWidth"        : 10,   //in pixels,
+          "legendWidth"              : 100,  //in pixels,
+          "margin"                   : 40,   //chart margin for axes - in pixels
+          "descriptionZoneHeight"    : 40,   //zone height for chart description - in pixels
+          "hiddenLineColor"          : "#eeeeee",
+          "legendTextColor"          : "#333333",
+          "legendItemOffset"         : 40,
+          "chartBackgroundColor"     : "#F9F9F9",
+          "lineOnPreviousLevelColor" : "#dddddd",
+          "preloadInvisibleArea"     : 1     
+     };
+       
+  var globalMetadata = null;
+  var globalMetadataTemplates = null;
+  var globalMetadataDefaults = null;
+  
+  var pars = getMainUrlSearchParams();
+  d3.json("metadata/metadata.json", function(json) {
+    globalMetadata = json;
+    d3.json("metadata/metadataTemplates.json", function(templatesJson) {
+       globalMetadataTemplates = templatesJson;
+       d3.json("metadata/metadataDefaults.json", function(defaultsJson) {
+          globalMetadataDefaults = defaultsJson;
+          changeChart (pars);
+       });
+    });
+
+  });
+
+  function gotoFullSite() {
+    var search = window.location.search;
+    window.open("http://defacto.ceu.hu/"+search)
+  }
+  
+  $('#clickable').click(gotoFullSite);
+
+</script>
+
+
+</body>
+
+</html>
+

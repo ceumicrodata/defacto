@@ -1,0 +1,80 @@
+@font-face {
+font-family: NewtypeMonoRounded;
+font-weight: bold;
+src: url("font/NewtypeMonoRounded_3-bold.otf") format("opentype");
+}
+
+
+body { 
+  font-size: 10pt;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  color: #505050;
+}
+
+div {
+  margin: 0px;
+}
+
+
+.whiteBox {
+  position: absolute;
+  width: 640px;
+  height: 480px;
+  background-color: #F9F9F9;   
+}
+
+.chartContainer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #FFFFFF;  
+  border-top: 0;
+}
+
+#detailsButton {
+  cursor:pointer;
+  position: absolute;
+  right: 214pt;
+  top: 120pt;
+  width: 15pt;
+  height: 15pt;
+  text-align: center;  
+}
+
+#defactoLink {
+  cursor:pointer;
+  position: absolute;
+  right: 214pt;
+  top: 240pt;
+  width: 15pt;
+  height: 15pt;
+  text-align: center;
+  font-size: 17pt;
+  font-weight: bold;
+  background-color: #e8e8e8; 
+  font-family: 'NewtypeMonoRounded', sans-serif;
+  color: #505050;
+}
+
+
+#detailsPanel {
+  display: none;
+  position: absolute;
+  right: 206pt;
+  top: 114pt;
+  width: 200pt;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  text-align: left;   
+}
+#detailsPanel img {
+  position:absolute;
+  top: 4pt;
+  right: 4pt;
+  cursor:pointer;
+}
+
