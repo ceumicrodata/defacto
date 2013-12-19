@@ -40,33 +40,18 @@
   <SCRIPT type="text/javascript" src="metadata/metadataFunctions.js"></SCRIPT>   
 
 </HEAD>
-
- 
-
 <body>  
-
-
   <div id = "chart1" class="whiteBox">
-
-    <div class = "chartContainer" width="600px" height="360px"></div>
-
+    <div class = "chartContainer"></div>
     <div id = "detailsButton">
       <img src="page_layout/icon_details.png">
     </div>
-    
     <div id = "detailsPanel">
       <img src="page_layout/icon_cancel.png">
       <div id = "detailsText"></div>
     </div>
-
-    <div id = "defactoLink"><a id = "clickable" href="#">Defacto</a></div>
-
-                                       
+    <div id = "defactoLink">DEFACTO.CEU.HU</div>
   </div>
-  
-
-
-
 <script type="text/javascript">
 
   var globalSettings = {
@@ -99,18 +84,12 @@
     });
 
   });
-
   function gotoFullSite() {
     var search = window.location.search;
     window.open("http://defacto.ceu.hu/"+search)
   }
-  
-  $('#clickable').click(gotoFullSite);
-
+  $('#defactoLink').click(gotoFullSite);
 </script>
-
-
 </body>
-
 </html>
 
