@@ -632,37 +632,46 @@ function cmd_chart(selection, stateData, metaData, metadataTemplates, metadataDe
               var hidden = nearestSerie && (s != nearestSerie);
               var selected = nearestSerie && (s == nearestSerie);
 
-           
-               
+              
               series[s].path.style("display","block")
                 .style("stroke", series[s].color)
+                .style("opacity", 1)
                 .style("stroke-width", selected ? series[s].thickness + 2 : series[s].thickness )
                 .transition().duration(appSettings.transitionSpeed)
-                   .style("opacity", 1)
-                   .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
+                  .style("opacity", hidden ? appSettings.hiddenOpacity : 1);
+//                   .style("opacity", 1)
+//                   .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
               series[s].legendLine.style("display","block")
                 .style("stroke", series[s].color)
                 .attr("x2",xPos)
+                .style("opacity", 1)
                 .transition().duration(appSettings.transitionSpeed)
-                   .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
+                   .style("opacity", hidden ? appSettings.hiddenOpacity : 1);
+//                   .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
               series[s].legendValue.style("display","block")
                 .style("fill", appSettings.legendTextColor)
                 .attr("x",xPos)
                 .text(d3.format(metaData.valueFormat)(currentValues[i].value))
+                .style("opacity", 1)
                 .transition().duration(appSettings.transitionSpeed)
-                   .style("fill", hidden ? appSettings.hiddenLineColor : appSettings.legendTextColor);
+                   .style("opacity", hidden ? appSettings.hiddenOpacity : 1);
+//                 .style("fill", hidden ? appSettings.hiddenLineColor : appSettings.legendTextColor);
               series[s].legendLineFix.style("display","block")
                 .style("stroke", series[s].color)
                 .style("stroke-width", selected ? 3 : 1 )
+                .style("opacity", 1)
                 .transition().duration(appSettings.transitionSpeed)
-                  .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
+                  .style("opacity", hidden ? appSettings.hiddenOpacity : 1);
+//                .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
               //series[s].legendDot.style("display","block")
               //  .attr("cx",xPos)
               //  .style("fill", hidden ? appSettings.hiddenLineColor : series[s].color);
               series[s].legendText.style("display","block")
                 .style("fill", appSettings.legendTextColor)
+                .style("opacity", 1)
                 .transition().duration(appSettings.transitionSpeed)
-                  .style("fill", hidden ? appSettings.hiddenLineColor : appSettings.legendTextColor);
+                  .style("opacity", hidden ? appSettings.hiddenOpacity : 1);
+//                .style("fill", hidden ? appSettings.hiddenLineColor : appSettings.legendTextColor);
               series[s].legendVisible = true;
               
               var noLegenPosChange = (series[s].lastLegendPosition && series[s].lastLegendPosition == i+1) 
@@ -746,21 +755,25 @@ function cmd_chart(selection, stateData, metaData, metadataTemplates, metadataDe
               svgTooltipDot.style("display", "none");
               svgTooltipGroup.style("display", "none");
           }
-          var clickablePosition = (nearestSerie ? (series[nearestSerie].onClick != 0) : currentKeyPath != "");
-                               
-          svg.style("cursor", clickablePosition ? "pointer" : "crosshair");
-          
           var lineXPos = lastMouseX - appSettings.margin;
           var lineYPos = lastMouseY - appSettings.margin - appSettings.descriptionZoneHeight;
           if (lineXPos < 0 || lineXPos > width || lineYPos < 0 || lineYPos >= height  ) {
             svgSectionLineX.style("display", "none");
             //svgSectionLineY.style("display", "none");
-      
+
+            var clickablePosition = (nearestSerie ? (series[nearestSerie].onClick != 0) : false);
+            svg.style("cursor", clickablePosition ? "pointer" : "default");
+            
           }
           else {
             svgSectionLineX.style("display", "block").attr("x1", lineXPos).attr("x2", lineXPos+"px");
             //svgSectionLineY.style("display", "block").attr("y1", lineYPos).attr("y2", lineYPos+"px");
+            
+            var clickablePosition = (nearestSerie ? (series[nearestSerie].onClick != 0) : currentKeyPath != "");
+            svg.style("cursor", clickablePosition ? "pointer" : "crosshair");
+          
           }
+
       }
 
       function onClick() {
