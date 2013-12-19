@@ -30,7 +30,7 @@
       "regions" : { 
           "isVisible" : "", 
           "serieKey"  : "country",
-          "color"     : "0081AC",
+          "color"     : "#0081AC",
           "thickness" : 2, 
           "onClick"   : 1    
       },
@@ -62,7 +62,7 @@
           "serieKey"  : "country",    
           "join"      : "`countriesInRegions` ON `countriesInRegions`.`country` = `countries`.`country`", 
           "filter"    : "`region` = 'V3'",
-          "color"     : "77C0FC",
+          "color"     : "#77C0FC",
           "thickness" : 2,        
           "onClick"   : 0      
       },
