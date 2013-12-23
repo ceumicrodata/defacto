@@ -497,7 +497,7 @@ function cmd_chart(selection, stateData, metaData, metadataTemplates, metadataDe
 
               var pos = -1;
               for (var i = 0; i < series[s].length; i++) {
-                  if (time < series[s][i].date) {
+                  if (time <= series[s][i].date) {
                       pos = i - 1;
                       break;
                   }
