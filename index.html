@@ -194,7 +194,7 @@ Egyetem kutatói készítették és szerkesztik.</p>
   var globalMetadataDefaults = null;
   
   var pars = getMainUrlSearchParams();
-  d3.json("metadata/metadata.json", function(json) {
+  d3.json("data/metadata.json", function(json) {
     globalMetadata = json;
     d3.json("metadata/metadataTemplates.json", function(templatesJson) {
        globalMetadataTemplates = templatesJson;
