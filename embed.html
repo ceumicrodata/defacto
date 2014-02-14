@@ -50,7 +50,7 @@
       <img src="page_layout/icon_cancel.png">
       <div id = "detailsText"></div>
     </div>
-    <div id = "defactoLink">DEFACTO.CEU.HU</div>
+    <div id = "defactoLink">DEFACTO.IO</div>
   </div>
 <script type="text/javascript">
 
@@ -73,7 +73,7 @@
   var globalMetadataDefaults = null;
   
   var pars = getMainUrlSearchParams();
-  d3.json("metadata/metadata.json", function(json) {
+  d3.json("data/metadata.json", function(json) {
     globalMetadata = json;
     d3.json("metadata/metadataTemplates.json", function(templatesJson) {
        globalMetadataTemplates = templatesJson;
@@ -86,7 +86,7 @@
   });
   function gotoFullSite() {
     var search = window.location.search;
-    window.open("http://defacto.ceu.hu/"+search)
+    window.open("/"+search)
   }
   $('#defactoLink').click(gotoFullSite);
 </script>
