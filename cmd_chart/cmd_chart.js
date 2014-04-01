@@ -183,6 +183,9 @@ function cmd_chart(selection, stateData, metaData, metadataTemplates, metadataDe
               
               url = query.url;
               
+              if (appSettings.ie9)
+                url = url.replace("http://defacto.ceu.hu/", "");
+                
               console.log("AJAX Query: " + url);
               d3.json(url, function (error,data) {
 
@@ -641,6 +644,9 @@ function cmd_chart(selection, stateData, metaData, metadataTemplates, metadataDe
                   .style("opacity", hidden ? appSettings.hiddenOpacity : 1);
 //                   .style("opacity", 1)
 //                   .style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
+
+            if (series[s].legendText) {
+        
               series[s].legendLine.style("display","block")
                 .style("stroke", series[s].color)
                 .attr("x2",xPos)
@@ -672,7 +678,7 @@ function cmd_chart(selection, stateData, metaData, metadataTemplates, metadataDe
                 .transition().duration(appSettings.transitionSpeed)
                   .style("opacity", hidden ? appSettings.hiddenOpacity : 1);
 //                .style("fill", hidden ? appSettings.hiddenLineColor : appSettings.legendTextColor);
-              series[s].legendVisible = true;
+               series[s].legendVisible = true;
               
               var noLegenPosChange = (series[s].lastLegendPosition && series[s].lastLegendPosition == i+1) 
               if (!noLegenPosChange) {
@@ -681,18 +687,20 @@ function cmd_chart(selection, stateData, metaData, metadataTemplates, metadataDe
                 series[s].legendGroup.transition().attr("transform", "translate(0," + yPos + ")").style("opacity", 1);               
                 series[s].lastLegendPosition = i+1;
               }
-
+            }
           }
           for (s in series)
             if (isSerieVisible(series[s].isVisible,currentKeyPath) && series[s].legendVisible == false) {
               var hidden = nearestSerie && (s != nearestSerie);
               series[s].path.style("stroke", hidden ? appSettings.hiddenLineColor : series[s].color);
-              series[s].legendLine.style("display","none");
-              series[s].legendValue.style("display","none");
-              series[s].legendLineFix.style("display","none");
-              //series[s].legendDot.style("display","none");
-              series[s].legendText.style("display","none");
-              series[s].lastLegendPosition = 0;
+              if (series[s].legendText) {
+                series[s].legendLine.style("display","none");
+                series[s].legendValue.style("display","none");
+                series[s].legendLineFix.style("display","none");
+                //series[s].legendDot.style("display","none");
+                series[s].legendText.style("display","none");
+                series[s].lastLegendPosition = 0;
+              }
             }
               
 
