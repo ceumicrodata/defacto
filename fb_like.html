@@ -1,5 +1,15 @@
 <html>
-<head></head>
+<head>
+<script type="text/javascript">
+    var Keen=Keen||{configure:function(e){this._cf=e},addEvent:function(e,t,n,i){this._eq=this._eq||[],this._eq.push([e,t,n,i])},setGlobalProperties:function(e){this._gp=e},onChartsReady:function(e){this._ocrq=this._ocrq||[],this._ocrq.push(e)}};(function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src=("https:"==document.location.protocol?"https://":"http://")+"dc8na2hxrj29i.cloudfront.net/code/keen-2.1.2-min.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+
+    // Configure the Keen object with your Project ID and (optional) access keys.
+    Keen.configure({
+        projectId: "53984b0cce5e436eb4000009",
+        writeKey: "21cf19cd487ba5efd57351c7bc3563a816bb9bf3255ebb949dc21d8c1fc79ea32bb9f1642c8a097c23db2090d3f2049bed0ca3bc072af9084a6854e4f9e8552b51c176477e213039823c5ae9df4273f853e6409d4a0dc02fa2717c3c319dbaa830d1b760c4f02a0d538e43ebdee64e40" // required for sending events
+     });
+</script>
+</head>
 <body>
 	<div id="fb-root"></div>
 <script>
@@ -34,6 +44,19 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); 
 })();
+</script>
+<script language='javascript'>
+    var trackTime = function () {
+        var reader = {
+            url: document.URL,
+            referrer: document.referrer,
+            note: "This person read for more than 40 seconds."
+        };
+
+        Keen.addEvent("readers", reader);
+    };
+
+    window.setTimeout(trackTime,40000);
 </script>
 </body>
 </html>
