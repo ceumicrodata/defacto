@@ -1,21 +1,21 @@
 topic;indicator;chart;long_name;description;details;dateMin;dateMax
-Fejlõdés;gdp;gdp;GDP per capita EURO;;;1995-03-31;2013-09-30
-Fejlõdés;gdpppp;gdpppp;GDP per capita vásárlóerö paritáson;;;1995-12-31;2013-09-30
-Növekedés;gdpgrowth;gdpgrowth;GDP éves változás;;;1996-03-31;2013-09-30
-Növekedés;industrygrowth;industrygrowth;Ipari termelés éves változása;;;1996-03-31;2013-10-31
-Növekedés;investment;investment;Beruházási ráta;;;1995-12-31;2013-09-30
-Infláció;inflation;inflation;HIPC infláció;;;1997-01-31;2013-10-31
-Munkapiac;unemployment;unemployment;Munkanélküliségi ráta szezonálisan igazított;;;1995-03-31;2013-09-30
-Munkapiac;laborforce;laborforce;Aktivitási ráta (négy negyedéves mozgóátlag);;;1998-12-31;2013-09-30
-Külsõ egynesúly;tradebalance;tradebalance;Áru és szolgáltatások kereskedelmének egyenlege (a GDP százalékában);;;1995-03-31;2013-09-30
-Külsõ egynesúly;currentaccount;currentaccount;Folyó fizetési mérleg egyenlege (a GDP százalékában);;;1995-12-31;2013-06-30
-Külsõ egynesúly;externaldebt;externaldebt;Nettó külsö adósság (a GDP százalékában);;;1997-12-31;2013-06-30
-Államháztartás;budgetannual;budgetannual;Államháztartás egyenlege - éves;;;1995-12-31;2012-12-31
-Államháztartás;budgetquaterly;budgetquaterly;Államháztartás egyenlege - negyedéves;;;1999-12-31;2013-06-30
-Államháztartás;primarybudget;primarybudget;Államháztartás elsödleges egyenlege;;;1995-12-31;2012-12-31
-Államháztartás;governmentdebt;governmentdebt;Bruttó államadósság - negyedéves;;;2000-03-31;2013-06-30
-Pénzügyi piacok;exchangerate;exchangerate;Nominális árfolyam az euróval szemben (emelkedés = leértékelödés);;;1995-01-31;2013-10-31
-Pénzügyi piacok;longtermyield;longtermyield;Hosszú lejáratú referencia államkötvényhozam;;;1995-09-30;2013-10-31
-Versenyképesség;competitiveness;competitiveness;Bérköltség-alapú versenyképesség (emelkedés = versenyképesség-javulás);;;1995-03-31;2013-06-30
-Versenyképesség;exportgrowth;exportgrowth;Export éves változása;;;2000-03-31;2013-09-30
-Versenyképesség;laborproductivity;laborproductivity;Munkatermelékenység;;;1995-03-31;2013-09-30
+Fejlõdés;gdp;gdp;GDP per capita EURO;;;1995-03-31;2014-03-31
+Fejlõdés;gdpppp;gdpppp;GDP per capita vásárlóerö paritáson;;;1995-12-31;2014-03-31
+Növekedés;gdpgrowth;gdpgrowth;GDP éves változás;;;1996-03-31;2014-03-31
+Növekedés;industrygrowth;industrygrowth;Ipari termelés éves változása;;;1996-03-31;2014-04-30
+Növekedés;investment;investment;Beruházási ráta;;;1995-12-31;2014-03-31
+Infláció;inflation;inflation;HIPC infláció;;;1997-01-31;2014-04-30
+Munkapiac;unemployment;unemployment;Munkanélküliségi ráta szezonálisan igazított;;;1995-03-31;2014-03-31
+Munkapiac;laborforce;laborforce;Aktivitási ráta (négy negyedéves mozgóátlag);;;1998-12-31;2013-12-31
+Külsõ egynesúly;tradebalance;tradebalance;Áru és szolgáltatások kereskedelmének egyenlege (a GDP százalékában);;;1995-03-31;2014-03-31
+Külsõ egynesúly;currentaccount;currentaccount;Folyó fizetési mérleg egyenlege (a GDP százalékában);;;1995-12-31;2013-12-31
+Külsõ egynesúly;externaldebt;externaldebt;Nettó külsö adósság (a GDP százalékában);;;1997-12-31;2013-12-31
+Államháztartás;budgetannual;budgetannual;Államháztartás egyenlege - éves;;;1995-12-31;2013-12-31
+Államháztartás;budgetquaterly;budgetquaterly;Államháztartás egyenlege - negyedéves;;;1999-12-31;2013-12-31
+Államháztartás;primarybudget;primarybudget;Államháztartás elsödleges egyenlege;;;1995-12-31;2013-12-31
+Államháztartás;governmentdebt;governmentdebt;Bruttó államadósság - negyedéves;;;2000-03-31;2013-12-31
+Pénzügyi piacok;exchangerate;exchangerate;Nominális árfolyam az euróval szemben (emelkedés = leértékelödés);;;1995-01-31;2014-05-31
+Pénzügyi piacok;longtermyield;longtermyield;Hosszú lejáratú referencia államkötvényhozam;;;1995-09-30;2014-04-30
+Versenyképesség;competitiveness;competitiveness;Bérköltség-alapú versenyképesség (emelkedés = versenyképesség-javulás);;;1995-03-31;2013-12-31
+Versenyképesség;exportgrowth;exportgrowth;Export éves változása;;;2000-03-31;2014-03-31
+Versenyképesség;laborproductivity;laborproductivity;Munkatermelékenység;;;1995-03-31;2014-03-31

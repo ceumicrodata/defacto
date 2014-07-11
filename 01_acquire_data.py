@@ -16,8 +16,8 @@ Created on Mon Aug 19 16:46:04 2013
      - unstacks to have different columns for expand_fields (country,
        country group code)
      - normalize data to empty or numeric
-       
-3. Parses date values. Adds column with time/period/date type. 
+
+3. Parses date values. Adds column with time/period/date type.
 
 @author: balint
 """
@@ -55,9 +55,7 @@ class InputTables(object):
 
 
 def download_extract_eurostat(tables, output_dir=OUTPUT_DIR):
-    ' 01. Clear output directory:'
-    # this can be done with os.path to be os independent
-    os.system('rm {}*'.format(output_dir))
+    # do not delete existing files
 
     '02. Bulkdownload:'
     def download_url(table_name):
@@ -67,7 +65,8 @@ def download_extract_eurostat(tables, output_dir=OUTPUT_DIR):
             table_name).replace(' ','')
     def wget_command(table_name, output_dir):
         'The wget prompt command for downloading a single eurostat table:'
-        output_option = '-O {0}{1}.tsv.gz '.format(output_dir,table_name)
+        # added -r to overwrite existing files
+        output_option = '-r -O {0}{1}.tsv.gz '.format(output_dir,table_name)
         return 'wget ' + output_option + download_url(table_name)
 
     for table in tables:
@@ -75,7 +74,8 @@ def download_extract_eurostat(tables, output_dir=OUTPUT_DIR):
 
     ' 03. Extract eurostat tsv-s:'
     # similarly, there is zip lib in the standard lib
-    os.system("gzip -d {}*.gz".format(OUTPUT_DIR))
+    # -f option to overwrite existing files
+    os.system("gzip -f -d {}*.gz".format(OUTPUT_DIR))
 
 
 def read_eurostat_header(filepath):
@@ -83,7 +83,7 @@ def read_eurostat_header(filepath):
     return r.fieldnames
 
 input_tables = InputTables(TABLE_DIR_FILE)
-download_extract_eurostat(input_tables.eurostat_tables)
+# download_extract_eurostat(input_tables.eurostat_tables)
 
 '''for table in input_tables.eurostat_tables:
     print read_eurostat_header(OUTPUT_DIR+table+'.tsv')
@@ -108,7 +108,7 @@ class DateParser(object):
         self.year = self.get_year()
         self.period = self.get_period()
         self.date = self.get_date()
-        
+
     def get_year(self):
         try:
             return int(self.matched_date.groups()[0])
@@ -122,10 +122,10 @@ class DateParser(object):
             return int(self.matched_date.groups()[2])
         except:
             return ''
-            
+
     def get_date_type(self):
         # match_to_type = dict([('','Yearly'),('M','Monthly'),('Q','Quaterly')])
-        match_to_type = dict([('','Y'),('M','M'),('Q','Q')])        
+        match_to_type = dict([('','Y'),('M','M'),('Q','Q')])
         try:
             match = self.matched_date.groups()[1]
             return match_to_type[match]
@@ -137,7 +137,7 @@ class DateParser(object):
             month = self.period * month_multiplier[self.date_type]
             day = calendar.monthrange(self.year,month)[1]
             return datetime.date(self.year,month,day).isoformat()
-        
+
 # Input table-wise operations
 table_counter = 0
 for table_spec in input_tables.input_table_specs:
@@ -226,7 +226,7 @@ for table_spec in input_tables.input_table_specs:
         # print dates
         for indate in inputdates:
             expand_dict = o_dict[indate]
-            parsed_date = DateParser(indate)            
+            parsed_date = DateParser(indate)
             expand_dict.update([('date_type',parsed_date.date_type)])
             expand_dict.update([('date',parsed_date.date)])
             writer.writerow(expand_dict)
